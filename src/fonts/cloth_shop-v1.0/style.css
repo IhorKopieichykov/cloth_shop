@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'cloth_shop';
+  src:  url('fonts/cloth_shop.eot?3vb00l');
+  src:  url('fonts/cloth_shop.eot?3vb00l#iefix') format('embedded-opentype'),
+    url('fonts/cloth_shop.ttf?3vb00l') format('truetype'),
+    url('fonts/cloth_shop.woff?3vb00l') format('woff'),
+    url('fonts/cloth_shop.svg?3vb00l#cloth_shop') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cloth_shop' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic_angle-left:before {
+  content: "\f104";
+}
+.ic_angle-right:before {
+  content: "\f105";
+}
+.ic_angle-up:before {
+  content: "\f106";
+}
+.ic_angle-down:before {
+  content: "\f107";
+}
+.ic_empty_cart:before {
+  content: "\e900";
+}
+.ic_search:before {
+  content: "\e901";
+}
