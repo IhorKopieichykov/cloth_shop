@@ -1,10 +1,12 @@
-
 $black: #1D1F22;
 $green: #5ECE7B;
+$grey: #EEEEEE;
 
 /*---- HEADER ----*/
 .header {
-    height: 106px;    
+    position: relative;
+    z-index: 20;
+    height: 80px;    
 }
 .header__container {
     display: flex;
@@ -15,8 +17,7 @@ $green: #5ECE7B;
 
 /*---- LOGO ----*/
 .header__logo {
-    padding: 10px;
-    margin: 5px 40px 5px 0px;
+    margin: 0px 50px 0px 0px;
     flex: 0 0 auto;
     transition: all .1s ease;
     &:hover{
@@ -25,99 +26,37 @@ $green: #5ECE7B;
     }
 }
 
-/*---- NAV ----*/
-.header__nav {
-    flex: 0 0 auto;
-}
-.nav {
-    height: 100%;
-}
-.nav__list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-.nav__item {
-    text-transform: uppercase;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 120%;
-    height: 100%;
-    margin: 16px 12px;
-    padding: 16px 8px;
-    border-bottom: 2px solid transparent;
-    // transition: border .2s ease-out;
-    &:first-child{
-        margin-left: 0px;
-    }
-    &:last-child{
-        margin-right: 0px;
-    }
-    &:hover{
-        cursor: pointer;
-        border-bottom: 2px solid $black;        
-    }
-    &:active{
-        cursor: pointer;
-        user-select: none;
-        color: $green;
-        border-bottom: 2px solid $green;        
-    }
-}
 
 .header__center{
     flex: 1 1 auto;
 }
-/*---- SEARCH ----*/
-.header__search {
-    position: relative;
-    margin: 16px;
-}    
-.search {
-    width: 280px;
-    height: 32px;
-    padding: 0px 16px;    
-    font-size: 16px;
-    font-weight: 500;
-    border: 1px solid $black;
-    border-radius: 16px;    
-    &:focus{
-        border-color: $green;
-        & + label{
-            color: $green;
-        }
-    }
-}
-.search + label{
-    position: absolute;
-    display: inline-block;
-    top: 25%;
-    right: 10%;
-    width: 0;
-    height: 0;
-    vertical-align: middle;
-}
-.search__label{
-}
+
 
 /*---- BUTTONS ----*/
-.header__buttons {
+.header__options {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    column-gap: 20px;
+    -moz-column-gap: 20px;
+        column-gap: 20px;
     font-size: 24px;   
     padding: 10px;
     margin-right: 20px;
 }
+[class*="header__option-"]{
+    position: relative;
+    &:hover{
+        cursor: pointer;
+        [class*="header__list-"] {
+            pointer-events: all;
+            opacity: 1;
+            transform: scaleY(1);
+        }
+    }
+}
 [class*="header__button-"]{    
     position: relative;
-    padding: 5px;
     &:hover{
         cursor: pointer;
     }    
@@ -129,20 +68,19 @@ $green: #5ECE7B;
         position: absolute;
         right: -15px;
         top: 20%;
+        transition: all .2s ease;
     }
 }
-.header__button-cart {
-}
-.ic_empty_cart {
-}
-.header__currency{
-    position: relative;
-}
-.header__button-currency {
-}
-[class*="-list"] {
+[class*="header__list-"] {
+    pointer-events: none;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: 0% 0%;
+    transition: opacity .1s ease, transform .2s ease-out;
     position: absolute;
+    z-index: 2;
     top: 100%;
+    right: -50%;
     background-color: #FFFFFF;
     box-shadow: 3px 5px 5px rgba(0, 0, 0, .5);
     ul{
@@ -150,13 +88,24 @@ $green: #5ECE7B;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
-        padding: 10px 5px;
     }
     ul li{
-        display: inline-flex;
+        display: inline-flex;      
         align-items: center;
-        gap: 5px;
+        justify-content: space-around;
+        width: max-content;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 160%;
+        -moz-column-gap: 10px;
+        column-gap: 10px;
+        padding: 8px 16px;
+        &:hover{
+            cursor: pointer;
+            pointer-events: all;
+            background-color: $grey;
+            // box-shadow: inset -2px -2px 5px white, inset 2px 2px 5px black;
+        }
     }
     ul li span{
         display: inline-block;
@@ -166,30 +115,11 @@ $green: #5ECE7B;
         border-radius: 50%;
     }
 }
-.header__currency-list {
-    right: 0;
-    width: 100%;
-}
-.header__language{
-    position: relative;
-}
-.header__button-language{
-    width: 24px;
-    height: 24px;
-    margin: 5px;
-    background: url(../../images/header/languages/en.svg) center center/cover no-repeat;
-    border: 1px solid $black;
-    border-radius: 50%;
-}
-.header__language-list{
-    right: -25%;
-    width: 150%;
-    font-size: 16px;    
-}
-#en span{
-    background: url(../../images/header/languages/en.svg) center center/cover no-repeat;
-}
-#ua span{
-    background: url(../../images/header/languages/ua.svg) center center/cover no-repeat;
-}
+
+
+
+
+
+
+
 

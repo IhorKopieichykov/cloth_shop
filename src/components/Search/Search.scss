@@ -1,0 +1,35 @@
+$black: #1D1F22;
+$green: #5ECE7B;
+$grey: #EEEEEE;
+
+/*---- SEARCH ----*/
+.header__search {
+    position: relative;
+    margin: 16px;
+}    
+.search {
+    width: 280px;
+    height: 32px;
+    padding: 0px 16px;    
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid $black;
+    border-radius: 16px;    
+    &:focus{
+        border-color: $green;
+        & + label{
+            color: $green;
+        }
+    }
+}
+.search + label{
+    position: absolute;
+    display: inline-block;
+    top: 25%;
+    right: 10%;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+}
+.search__label{
+}

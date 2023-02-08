@@ -1,0 +1,23 @@
+$black: #1D1F22;
+$green: #5ECE7B;
+$grey: #EEEEEE;
+
+/*---- LANGUAGE ----*/
+.header__option-language{
+}
+.header__button-language{
+    width: 24px;
+    height: 24px;
+    // margin: 5px;
+    background: url(../../images/header/languages/en.svg) center center/cover no-repeat;
+    border: 1px solid $black;
+    border-radius: 50%;
+}
+.header__list-language{ 
+}
+#en span{
+    background: url(../../images/header/languages/en.svg) center center/cover no-repeat;
+}
+#ua span{
+    background: url(../../images/header/languages/ua.svg) center center/cover no-repeat;
+}
