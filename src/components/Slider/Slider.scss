@@ -1,0 +1,12 @@
+.main__slider {    
+    overflow: hidden;
+    margin: auto;
+    max-width: 1440px;   
+    margin-bottom: 50px;
+    img{
+        width: 100%;
+        height: 520px;
+        object-fit: cover;
+        object-position: 0% 22%;
+    }
+}

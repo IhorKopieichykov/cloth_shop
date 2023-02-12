@@ -1,0 +1,37 @@
+.main__promo {
+    margin-bottom: 40px;
+}
+.promo {
+}
+.promo_categories {
+    padding: 75px 0px;
+    width: 100%;
+    column-gap: 150px;
+}
+.promo_category {
+    flex: 1 1 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1.45);
+    overflow: hidden;    
+    cursor: pointer;
+    img{
+        width: 100%;    
+        object-fit: cover;
+        transition: all .3s ease-in-out;
+    }
+    &:hover{
+        img{
+            transform: scale(1.1);
+        }
+    }
+}
+.promo_category__title {
+    position: absolute;    
+    z-index: 2;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 150%;
+    color: #FFFFFF;
+}
