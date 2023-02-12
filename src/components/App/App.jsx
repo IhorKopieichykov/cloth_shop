@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.scss';
 import Header from "../Header/Header";
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 
 export default class App extends React.Component {
   constructor(props){
@@ -10,6 +12,8 @@ export default class App extends React.Component {
     return (
       <div className='wrapper'>    
         <Header />
+        <Main />
+        <Footer/>
       </div>
     );
   }

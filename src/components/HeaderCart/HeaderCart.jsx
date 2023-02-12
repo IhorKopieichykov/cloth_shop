@@ -6,7 +6,7 @@ function HeaderCart(){
             <div className='header__button-cart'>
                 <i className='ic_empty_cart'></i>
             </div>  
-            <div className="header__cart show">
+            <div className="header__cart">
                 <div className="header__cart_window hcart">
                     <div className="hcart__title">My bag, <span>3 items</span></div>
                     <div className="hcart__items">
