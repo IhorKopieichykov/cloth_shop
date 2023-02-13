@@ -9,9 +9,11 @@ export default function Footer(){
                         <img src={logo} alt="logo" />
                     </div>
                     <menu className="footer__menu">
-                        <div className="footer__menu_item">github</div>
-                        <div className="footer__menu_item">contacts</div>
-                        <div className="footer__menu_item">rights</div>
+                        <ul>
+                            <li className="footer__menu_item">github</li>
+                            <li className="footer__menu_item">contacts</li>
+                            <li className="footer__menu_item">rights</li>
+                        </ul>                        
                     </menu>
                     <div className="footer__slideup slideup">
                         <div className="slideup__text"></div>
