@@ -1,10 +1,10 @@
 import './Header.scss';
-import logo from "../../images/header/logo.svg";
-import Nav from '../Nav/Nav';
-import HeaderCart from '../HeaderCart/HeaderCart';
-import Currency from '../Currency/Currency';
-import Language from '../Language/Language';
-import Search from '../Search/Search';
+import logo from "../../../images/header/logo.svg";
+import Nav from './Nav/Nav';
+import HeaderCart from './HeaderCart/HeaderCart';
+import Currency from './Currency/Currency';
+import Language from './Language/Language';
+import Search from './Search/Search';
 
 function Header(props) {
     const menuItems = ["home", "women", "men", "kids"];
@@ -18,9 +18,9 @@ function Header(props) {
                 <div className='header__center'></div>
                 <Search />
                 <div className='header__options'>
-                    <HeaderCart cart={props.cart}/>           
+                    <HeaderCart cart={props.cart} onDelete={props.onDelete}/>
                     <Currency />
-                    <Language />
+                    <Language /> 
                 </div>
             </div>        
         </header>

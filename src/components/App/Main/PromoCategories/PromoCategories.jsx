@@ -1,7 +1,7 @@
 import './PromoCategories.scss';
-import women from '../../images/main/home/categories/women.png';
-import men from '../../images/main/home/categories/men.png';
-import kids from '../../images/main/home/categories/kids.png';
+import women from '../../../../images/main/home/categories/women.png';
+import men from '../../../../images/main/home/categories/men.png';
+import kids from '../../../../images/main/home/categories/kids.png';
 
 function PromoCategories() {
     return (

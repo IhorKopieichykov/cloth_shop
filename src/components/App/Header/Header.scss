@@ -4,15 +4,20 @@ $grey: #EEEEEE;
 
 /*---- HEADER ----*/
 .header {
-    position: relative;
-    z-index: 20;
-    height: 80px;        
+    position: absolute;
+    z-index: 15;
+    height: 80px;
+    max-width: 100%;
+    padding: 0 calc(50% - 600px);
+    background-color: #fff;
 }
 .header__container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1000;
 }
 
 /*---- LOGO ----*/
@@ -28,7 +33,8 @@ $grey: #EEEEEE;
 
 
 .header__center{
-    flex: 1 1 auto;
+    flex: 1 1 296px;
+    width: 296px;
 }
 
 

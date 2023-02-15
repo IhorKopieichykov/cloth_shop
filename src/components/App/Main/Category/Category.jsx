@@ -1,5 +1,5 @@
 import "./Category.scss";
-import CatProducts from "../CatProducts/CatProducts";
+import CatProducts from "./CatProducts/CatProducts";
 
 function Category(props){
     return (

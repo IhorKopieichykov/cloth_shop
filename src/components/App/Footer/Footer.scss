@@ -47,10 +47,33 @@ $grey: #EEEEEE;
     margin-left: 20px;
 }
 .slideup {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    &:hover{
+        .slideup__text {
+            color: $black;
+        }
+        .slideup__button {
+            border: 1px solid $black;
+        }
+    }
 }
 .slideup__text {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(0, 0, 0, 0.5);
 }
 .slideup__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .ic_angle-up {
 }

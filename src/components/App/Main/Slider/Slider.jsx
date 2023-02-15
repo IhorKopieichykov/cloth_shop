@@ -1,5 +1,5 @@
 import './Slider.scss';
-import slider_image from '../../images/main/home/slider/slider.jpg';
+import slider_image from '../../../../images/main/home/slider/slider.jpg';
 
 function Slider() {
     return (

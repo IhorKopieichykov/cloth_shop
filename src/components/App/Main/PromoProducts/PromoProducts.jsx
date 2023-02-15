@@ -1,5 +1,5 @@
 import './PromoProducts.scss';
-import product_image from '../../images/products/p.png';
+import product_image from '../../../../images/products/p.png';
 
 function PromoProducts() {
     return (

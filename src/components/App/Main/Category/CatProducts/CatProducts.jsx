@@ -7,9 +7,17 @@ function CatProducts(props){
             {products.map(product => 
                 <div className="cat__product" key={product.id}>
                     <div className="cat__product_image">
-                        <img src={require('../../images/main/women/products/' + product.image)} alt="" />
+                        <img src={require('../../../../../images/main/women/products/' + product.image)} alt="" />
                     </div>                                
-                    <div className="cat__product_addtocart" onClick={() => {props.onAdd(product)}}>
+                    <div className="cat__product_addtocart" 
+                        onClick={() => {
+                            props.onAdd({
+                                    ...product,
+                                    "size": product.sizes[0],
+                                    "color": product.colors[0],
+                                    "count": 1
+                                })
+                            }}>
                         <i className='ic_empty_cart'></i>
                         </div>
                     <h3 className="cat__product_title">{product.name}</h3>

@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.scss';
-import logo from "../../images/header/logo.svg";
+import logo from "../../../images/header/logo.svg";
 
 export default function Footer(){
     return <footer className="footer">
@@ -15,8 +15,8 @@ export default function Footer(){
                             <li className="footer__menu_item">rights</li>
                         </ul>                        
                     </menu>
-                    <div className="footer__slideup slideup">
-                        <div className="slideup__text"></div>
+                    <div className="footer__slideup slideup" onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>
+                        <div className="slideup__text">Back to top</div>
                         <div className="slideup__button"><i className='ic_angle-up'></i></div>
                     </div>
                 </div>        
