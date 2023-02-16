@@ -10,15 +10,55 @@ $grey: #EEEEEE;
     position: relative;
 }
 .header__button-cart {
+    position: relative;
     cursor: pointer;
     &:hover{
         color: $green;
+        .header__cart_counter{
+            background-color: $green;
+            color: $black;
+        }
     }
     &.active{
         color: $green;
+        .header__cart_counter{
+            background-color: $green;
+            color: $black;
+        }
     }
 }
 .ic_empty_cart {
+}
+.header__cart_counter{
+    position: absolute;
+    display: table;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: $black;
+    animation: counter .3s ease forwards;
+    p{
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }   
+}
+@keyframes counter {
+    0%{
+        transform: scale(0);
+    }
+    70%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 .header__cart_bg{
     position: fixed;

@@ -1,45 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Header from "./Header/Header";
 import Main from './Main/Main';
 import Footer from './Footer/Footer';
 import women_products from "../../other/women_products.json";
 
-export default class App extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			cart: [],
-			products: {
-				women: women_products,
-				men: '',
-				kids: '',
-			}
+export default function App () {
+
+	let [cart, setCart] = useState([]);
+	let [products, setProducts] = useState({
+		women: women_products,
+		men: '',
+		kids: '',
+	});	
+
+	const updateItemCount = (searchItem, count) => {
+		const indexOfItem = cart.indexOf(searchItem);
+		const currItem = cart[indexOfItem];
+		const newItem = {
+			...currItem,
+			"count": currItem.count + count
 		}
-	}
-	render(){
-		return (
-			<div className='wrapper'>    
-				<Header cart={this.state.cart} onDelete={this.deleteFromCart}/>
-				<Main products={this.state.products.women} onAdd={this.addToCart}/>
-				<Footer/>
-			</div>
-		);
+		setCart([...cart.slice(0, indexOfItem), newItem, ...cart.slice(indexOfItem + 1)]);
 	}
 
-	addToCart = (item) => {
-		this.setState(
-			{
-				cart: [...this.state.cart, item]
-			}
-		);
+	const addToCart = (item) => {
+		const searchItem = cart.find(i => i.id === item.id && i.color === item.color && i.size === item.size);
+		if (searchItem) {
+			updateItemCount(searchItem, 1);			
+		} else{
+			setCart(prevCart => [...prevCart, item]);
+		}		
 	}
 
-	deleteFromCart = (dItem) => {
-		this.setState(
-			{
-				cart: this.state.cart.filter(item => item.id !== dItem.id && item.color !== dItem.color && item.size !== dItem.size)
+	const deleteFromCart = (item, count) => {
+		if (item.count <= count) {
+			setCart(prevCart => prevCart.filter(i => i.id !== item.id && i.color !== item.color && i.size !== item.size));
+		} else {
+			const searchItem = cart.find(i => i.id === item.id && i.color === item.color && i.size === item.size);
+			if (searchItem) {
+				updateItemCount(searchItem, -count);	
 			}
-		);
+		}			
 	}
+
+	const updateCartItem = (indexOfItem, newItem) => {
+		if (newItem.count <= 0) {
+			setCart([...cart.slice(0, indexOfItem), ...cart.slice(indexOfItem + 1)]);
+		} else {
+			setCart([...cart.slice(0, indexOfItem), newItem, ...cart.slice(indexOfItem + 1)]);
+		}		
+	}
+	
+	return (
+		<div className='wrapper'>    
+			<Header cart={cart} onUpdate={updateCartItem}/>
+			<Main products={products.women} onAdd={addToCart}/>
+			<Footer/>
+		</div>
+	);
 }

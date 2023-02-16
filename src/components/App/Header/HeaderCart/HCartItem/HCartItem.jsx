@@ -1,58 +1,7 @@
 import { useState } from 'react';
 import './HCartItem.scss';
 
-function HCartItem({currItem, onDelete}){
-
-    // const [item, setItem] = useState(currItem);
-
-    // const changeSelectedOption = (e) => {
-    //     if (e.target.hasAttribute("data-size")) {
-    //         const size = e.target.dataset.size;
-    //         setItem((prevItem)=>({
-    //             ...prevItem,
-    //             "size": size
-    //         }));
-    //     } else if (e.target.hasAttribute("data-color")) {
-    //         const color = e.target.dataset.color;
-    //         setItem((prevItem) => ({
-    //             ...prevItem,
-    //             "color": color
-    //         }));
-    //     }
-    // }
-
-    // const countPlus = () => {
-    //     setItem((prevItem) => ({
-    //         ...prevItem,
-    //         "count": prevItem.count + 1
-    //     }));
-    // }
-
-    // const countMinus = () => {
-    //     if (item.count > 1) {
-    //         setItem((prevItem) => ({
-    //             ...prevItem,
-    //             "count": prevItem.count - 1
-    //         }));
-    //     }        
-    // }    
-
-    const changeSelectedOption = (e) => {
-        if (e.target.hasAttribute("data-size")) {
-            currItem.size = e.target.dataset.size;            
-        } else if (e.target.hasAttribute("data-color")) {
-            currItem.color = e.target.dataset.color;
-        }
-    }
-
-    const countPlus = () => {        
-        currItem.count = currItem.count + 1;
-    }
-
-    const countMinus = () => {
-        currItem.count = currItem.count - 1;
-    }  
-
+function HCartItem({currItem, index, onUpdate}){
     return (       
         <div className="hcart__item">
             <div className="hcart__item_info">
@@ -70,7 +19,7 @@ function HCartItem({currItem, onDelete}){
                                     className={`cart_item__size-select__option ${currItem.size === size ? "selected" : ""}`}
                                     key={size} 
                                     data-size={size}
-                                    onClick={changeSelectedOption}>
+                                    onClick={(e) => onUpdate(index, {...currItem, "size": e.target.dataset.size})}>
                                         {size.toUpperCase()}
                                     </div>
                                 ))
@@ -89,8 +38,8 @@ function HCartItem({currItem, onDelete}){
                                     className={`cart_item__color-select__option ${currItem.color === color ? "selected" : ""}`}
                                     key={color} 
                                     data-color={color}
-                                    onClick={changeSelectedOption}
-                                    style={{backgroundColor: color}}></div>
+                                    style={{backgroundColor: color}}
+                                    onClick={(e) => onUpdate(index, {...currItem, "color": e.target.dataset.color})}></div>
                                 ))
                             }
                         </div>
@@ -98,14 +47,14 @@ function HCartItem({currItem, onDelete}){
                 </div>
             </div>
             <div className="hcart__item_counter">
-                <div className="hcart__item_counter__option" onClick={countPlus}>+</div>
+                <div className="hcart__item_counter__option" onClick={(e) => onUpdate(index, {...currItem, "count": currItem.count + 1})}>+</div>
                 <div className="hcart__item_counter__count">{currItem.count}</div>
-                <div className="hcart__item_counter__option" onClick={countMinus}>–</div>
+                <div className="hcart__item_counter__option" onClick={(e) => onUpdate(index, {...currItem, "count": currItem.count - 1})}>–</div>
             </div>
             <div className="hcart__item_image" >
                 <img src={require('../../../../../images/main/women/products/' + currItem.image)} alt="" />
             </div>
-            <div className="hcart__item_delete" onClick={() => onDelete(currItem)}><i className="ic_trash"></i></div>
+            <div className="hcart__item_delete" onClick={(e) => onUpdate(index, {...currItem, "count": 0})}><i className="ic_trash"></i></div>
         </div>
     );
 }

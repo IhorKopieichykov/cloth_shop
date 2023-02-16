@@ -2,7 +2,7 @@ import { useState } from 'react';
 import HCartItem from './HCartItem/HCartItem';
 import './HeaderCart.scss';
 
-function HeaderCart({cart, onDelete}){
+function HeaderCart({cart, onUpdate}){
     let [cartIsShown, setCartIsShown] = useState(false);
 
     function toggleCart(){
@@ -13,6 +13,7 @@ function HeaderCart({cart, onDelete}){
         <div className="header__option-cart">
             <div className={`header__button-cart${cartIsShown ? " active" : ''}`} onClick={toggleCart}>
                 <i className='ic_empty_cart'></i>
+                {cart.length ? <div className="header__cart_counter"><p>{cart.reduce((acc, item) => (acc += item.count), 0)}</p></div> : ""}
             </div>  
             <div className={`header__cart_bg ${cartIsShown ? "show" : ""}`} onClick={toggleCart}></div>
             <div className={`header__cart_window hcart ${cartIsShown ? "show" : "hide"}`}>
@@ -23,7 +24,7 @@ function HeaderCart({cart, onDelete}){
                 {cart.length 
                     ?   <div className="hcart__items">
                             {cart.map((item, index) => 
-                                <HCartItem currItem={item} key={index} onDelete={onDelete}/> 
+                                <HCartItem currItem={item} key={index} index={index} onUpdate={onUpdate}/> 
                             )}                                               
                         </div>
                     :   <div className='hcart__empty'>
@@ -36,7 +37,7 @@ function HeaderCart({cart, onDelete}){
                     <div className="header__cart_total-title">Total</div>
                     <div className="header__cart_total-value">$
                         {
-                            cart.reduce((prev, curr) => prev + curr.price, 0).toFixed(2)
+                            cart.reduce((prev, curr) => prev + curr.price*curr.count, 0).toFixed(2)
                         }
                     </div>                            
                 </div>

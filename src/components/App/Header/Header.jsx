@@ -6,7 +6,7 @@ import Currency from './Currency/Currency';
 import Language from './Language/Language';
 import Search from './Search/Search';
 
-function Header(props) {
+function Header({cart, onUpdate}) {
     const menuItems = ["home", "women", "men", "kids"];
     return (
         <header className='header'>
@@ -18,7 +18,7 @@ function Header(props) {
                 <div className='header__center'></div>
                 <Search />
                 <div className='header__options'>
-                    <HeaderCart cart={props.cart} onDelete={props.onDelete}/>
+                    <HeaderCart cart={cart} onUpdate={onUpdate}/>
                     <Currency />
                     <Language /> 
                 </div>
