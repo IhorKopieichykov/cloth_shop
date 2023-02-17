@@ -1,24 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import HCartItem from './HCartItem/HCartItem';
 import './HeaderCart.scss';
 
 function HeaderCart({cart, onUpdate}){
-    let [cartIsShown, setCartIsShown] = useState(false);
+    let [cartIsShown, setCartIsShown] = useState(false);   
+    const cartRef = useRef();
 
     function toggleCart(){
         setCartIsShown(cartIsShown = !cartIsShown);
     }
 
+    useEffect(() => {
+        const handler = (e) => {
+            if (!cartRef.current.contains(e.target)) {
+                setCartIsShown(false);
+            }
+        }
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    });
+
+    function getItemsCount(){
+        return cart.reduce((acc, item) => (acc += item.count), 0);
+    }
+
     return (  
-        <div className="header__option-cart">
+        <div className="header__option-cart" ref={cartRef}>
             <div className={`header__button-cart${cartIsShown ? " active" : ''}`} onClick={toggleCart}>
                 <i className='ic_empty_cart'></i>
-                {cart.length ? <div className="header__cart_counter"><p>{cart.reduce((acc, item) => (acc += item.count), 0)}</p></div> : ""}
+                {cart.length ? <div className="header__cart_counter"><p>{getItemsCount()}</p></div> : ""}
             </div>  
-            <div className={`header__cart_bg ${cartIsShown ? "show" : ""}`} onClick={toggleCart}></div>
+            {/* <div className={`header__cart_bg ${cartIsShown ? "show" : ""}`} onClick={toggleCart}></div> */}
             <div className={`header__cart_window hcart ${cartIsShown ? "show" : "hide"}`}>
                 <div className="hcart__title"><b>My bag</b><span><b>, </b> 
-                    {cart.length} {cart.length === 1 ? "item" : "items"}
+                    {getItemsCount()} {cart.length === 1 ? "item" : "items"}
                     </span>
                 </div>
                 {cart.length 
