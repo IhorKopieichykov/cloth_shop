@@ -5,11 +5,9 @@ $grey: #EEEEEE;
 /*---- NAV ----*/
 .header__nav {
     flex: 0 0 auto;
+    
 }
 .nav {
-    height: 100%;
-}
-.nav__list {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -18,16 +16,18 @@ $grey: #EEEEEE;
     height: 100%;
     gap: 16px;
 }
-.nav__item {
+.nav__item {    
+    height: 100%;  
+    display: flex;
+    align-items: flex-end;
+    padding: 30px 12px;
     text-transform: uppercase;
+    color: $black;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 120%;
-    height: 100%;
-    padding: 30px 12px;
     border-bottom: 2px solid transparent;
-    // transition: border .2s ease-out;
     &:first-child{
         margin-left: 0px;
     }

@@ -7,7 +7,7 @@ $grey: #EEEEEE;
     position: absolute;
     z-index: 15;
     height: 80px;
-    max-width: 100%;
+    width: 100%;
     padding: 0 calc(50% - 600px);
     background-color: #fff;
 }
@@ -18,10 +18,12 @@ $grey: #EEEEEE;
     justify-content: center;
     position: relative;
     z-index: 1000;
+    height: 100%;
 }
 
 /*---- LOGO ----*/
 .header__logo {
+    display: block;
     margin: 0px 50px 0px 0px;
     flex: 0 0 auto;
     transition: all .1s ease;

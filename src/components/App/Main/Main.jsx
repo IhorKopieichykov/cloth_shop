@@ -6,11 +6,11 @@ import PromoCategories from "./PromoCategories/PromoCategories";
 import Category from "./Category/Category";
 
 
-export default function Main(props){
+export default function Main({children}){
     return (
             <main className="main">
-                <div className="main__container">                    
-                    <Category category="Women" products={props.products} onAdd={props.onAdd} onDelete={props.onDelete}/>
+                <div className="main__container">
+                    {children}
                 </div>
             </main>
     );

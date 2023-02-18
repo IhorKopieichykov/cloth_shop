@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Apollo Running Sweater",
+        "image": "sweater.png",
+        "price": 49.99,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#15A4C3", "#5ECE7B", "#EA8120"]
+    },
+    {
+        "id": 2,
+        "name": "Apollo Running Sweater",
+        "image": "sweater.png",
+        "price": 50.00,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#15A4C3", "#5ECE7B", "#EA8120"]
+    },
+    {
+        "id": 3,
+        "name": "Apollo Running Sweater",
+        "image": "sweater.png",
+        "price": 52.18,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#15A4C3", "#5ECE7B", "#EA8120"]
+    },
+    {
+        "id": 4,
+        "name": "Apollo Running Sweater",
+        "image": "sweater.png",
+        "price": 30.27,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#15A4C3", "#5ECE7B", "#EA8120"]
+    },
+    {
+        "id": 5,
+        "name": "Apollo Running Sweater",
+        "image": "sweater.png",
+        "price": 50.00,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#15A4C3", "#5ECE7B", "#EA8120"]
+    },
+    {
+        "id": 6,
+        "name": "Apollo Running Sweater",
+        "image": "sweater.png",
+        "price": 50.49,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#15A4C3", "#5ECE7B", "#EA8120"]
+    }
+]

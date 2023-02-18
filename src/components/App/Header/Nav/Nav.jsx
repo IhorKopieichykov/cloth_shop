@@ -1,17 +1,17 @@
 import './Nav.scss';
+import { NavLink } from 'react-router-dom';
 
-function Nav(props){
-    const menuItems = props.menuItems;
-    const active = props.active.toLowerCase();
+function Nav({menuItems}){
     return (
         <nav className='header__nav nav'>
-            <ul className='nav__list'>
-                {menuItems.map(item => 
-                    active === item 
-                    ? (<li className='nav__item active' key={item}>{item}</li>) 
-                    : (<li className='nav__item' key={item}>{item}</li>) 
-                )}
-            </ul>
+            {/* {menuItems.map(item => 
+                active === item 
+                ? (<li className='nav__item active' key={item}>{item}</li>) 
+                : (<li className='nav__item' key={item}>{item}</li>) 
+            )} */}
+            {menuItems.map(item => 
+                <NavLink to={item.link} key={item.title} className='nav__item'>{item.title}</NavLink>
+            )}
         </nav>
     );
 }
