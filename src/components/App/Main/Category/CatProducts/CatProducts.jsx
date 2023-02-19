@@ -1,7 +1,6 @@
 import "./CatProducts.scss";
 
-function CatProducts(props){
-    const products = props.products;
+function CatProducts({products, onAdd}){
     return (
         <div className="cat__products">
             {products.map(product => 
@@ -11,7 +10,7 @@ function CatProducts(props){
                     </div>                                
                     <div className="cat__product_addtocart" 
                         onClick={() => {
-                            props.onAdd({
+                            onAdd({
                                     ...product,
                                     "size": product.sizes[0],
                                     "color": product.colors[0],

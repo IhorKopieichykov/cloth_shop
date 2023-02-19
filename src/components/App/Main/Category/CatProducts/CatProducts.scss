@@ -3,7 +3,7 @@ $green: #5ECE7B;
 $grey: #EEEEEE;
 
 .cat__products {
-    padding: 24px 0px;
+    padding: 10px 0px 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -71,7 +71,7 @@ $grey: #EEEEEE;
 .cat__product_addtocart{
     position: absolute;
     right: 30px;
-    top: 250px;
+    top: 240px;
     display: flex;
     align-items: center;
     justify-content: center;

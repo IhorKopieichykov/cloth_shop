@@ -10,7 +10,7 @@ function HeaderCart({cart, onUpdate}){
         setCartIsShown(cartIsShown = !cartIsShown);
     }
 
-    useEffect(() => {
+    useEffect(() => {        
         const handler = (e) => {
             if (!cartRef.current.contains(e.target)) {
                 setCartIsShown(false);
