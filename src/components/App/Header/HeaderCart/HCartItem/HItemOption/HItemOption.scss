@@ -44,11 +44,11 @@ $green: #5ECE7B;
 .cart_item__color-select__option {
     width: 20px;
     height: 20px;
-    border: 1px solid #FFFFFF;    
+    border: 1px solid $black;    
     &:hover{
-        outline: $green solid 1px;
+        outline: $green solid 2px;
     }
     &.selected{
-        outline: $green solid 1px;
+        outline: $green solid 2px;
     }
 }

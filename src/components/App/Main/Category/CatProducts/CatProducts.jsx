@@ -7,7 +7,7 @@ function CatProducts(props){
             {products.map(product => 
                 <div className="cat__product" key={product.id}>
                     <div className="cat__product_image">
-                        <img src={require('../../../../../images/main/women/products/' + product.image)} alt="" />
+                        <img src={require(`../../../../../images/products/${product.category}/${product.id}/${product.images[0]}`)} alt={product.id} />
                     </div>                                
                     <div className="cat__product_addtocart" 
                         onClick={() => {
@@ -19,9 +19,10 @@ function CatProducts(props){
                                 })
                             }}>
                         <i className='ic_empty_cart'></i>
-                        </div>
-                    <h3 className="cat__product_title">{product.name}</h3>
+                    </div>
+                    <div className="cat__product_title">{product.name}</div>
                     <div className="cat__product_price">${product.price.toFixed(2)}</div>
+                    
                 </div>
             )}
         </div>

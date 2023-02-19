@@ -3,7 +3,7 @@ import './HItemOption.scss';
 function HItemOption({item, index, onUpdate, type}){
     return  (
         <div className="hcart__item_option">
-            <div className="hcart__item_option-title">Color:</div>
+            <div className="hcart__item_option-title">{type[0].toUpperCase() + type.slice(1)}:</div>
             <div className="hcart__item_option-picker">
                 <div className="hcart__item_option-select">
                     {   type === "size" ?                        

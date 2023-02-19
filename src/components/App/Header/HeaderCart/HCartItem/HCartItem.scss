@@ -8,6 +8,7 @@ $grey: #EEEEEE;
     display: flex;
     align-items: stretch;
     margin-bottom: 40px;
+    min-height: 200px;
     &:last-child{
         margin-bottom: 0px;
     }
@@ -33,39 +34,10 @@ $grey: #EEEEEE;
     margin: 0px 0px 8px 0px;
 }
 
-.hcart__item_counter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;    
-    margin: 0px 8px 0px 0px;
-}
-.hcart__item_counter__option {
-    width: 24px;
-    height: 24px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-style: normal;
-    text-align: center;
-    vertical-align: middle;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.05;
-    border: 1px solid $black;
-    &:hover{
-        cursor: pointer;
-        background-color: $black;
-        color: #FFFFFF;
-    }
-}
-.hcart__item_counter__count {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 160%;
-}
-
 .hcart__item_image {
-    flex: 1 1 auto;    
+    flex: 0 0 auto;   
+    width: 120px;
+    // height: 190px; 
     overflow: hidden;
     img{
         height: 100%;
@@ -73,12 +45,6 @@ $grey: #EEEEEE;
         object-fit: cover;
         object-position: center;
     }
-}
-.hcart__item_image[data-product="d"]{
-    background: url("../../../../../images/products/d.svg") 0 0/cover no-repeat;
-}
-.hcart__item_image[data-product="s"]{
-    background: url("../../../../../images/products/s.svg") 0 0/cover no-repeat;
 }
 
 .hcart__item_delete{
