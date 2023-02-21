@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useContext } from 'react';
+// import useLocalStorage from '../../../../helpers/useLocalStorage';
 import { CartContext } from '../../../CartContext/CartContext';
 import HCartItem from './HCartItem/HCartItem';
 import './HeaderCart.scss';
@@ -20,6 +21,13 @@ function HeaderCart(){
     });    
 
     const {cart, setItems} = useContext(CartContext);
+    
+    // const [items, setItems] = useLocalStorage('cart', []);
+    // const [cart, setCart] = useState(items);
+
+    // useEffect(()=>{
+    //     setCart(items);
+    // }, [items])
 
     function getItemsCount(){
         return cart.reduce((acc, item) => (acc += item.count), 0);

@@ -1,50 +1,70 @@
 import "./Category.scss";
 import CatProducts from "./CatProducts/CatProducts";
-import Filter from './Filter/Filter';
-import { useEffect, useState, useMemo, useCallback } from "react";
+import Sort from './Sort/Sort';
+import { useState, useMemo, useEffect, useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
 
-function Category({title, products, onAdd}){
-    const sortings = useMemo(()=>["Default", "Name (A-z)", "Name (z-A)", "Price (High-Low)", "Price (Low-High)"], []);
-    const [sortId, setSortId] = useState(0);
-    const [goods, setGoods] = useState(products);    
+function Category({title, products}){
+    const [goods, setGoods] = useState(products);  
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const sortGoods = useCallback((i) => {
+    const field = useMemo(() => searchParams.get('sortBy') || '', [searchParams]);
+    const order = useMemo(() => searchParams.get('order') || '', [searchParams]);
+    
+    useEffect(() => {
+        setGoods(products)
+    }, [products]);
+    
+    const sortings = useMemo(() => [
+        { 
+            "title": "Default",
+            "field": '',
+            "order": '',
+        }, 
+        { 
+            "title": "Name (A-z)",
+            "field": 'name',
+            "order": 'asc',
+        },
+        { 
+            "title": "Name (z-A)",
+            "field": 'name',
+            "order": 'desc',
+        },
+        { 
+            "title": "Price (High-Low)", 
+            "field": 'price',
+            "order": 'desc',
+        },
+        { 
+            "title": "Price (Low-High)",
+            "field": 'price',
+            "order": 'asc',
+        },
+    ], []);
+    const [sortId, setSortId] = useState(0);   
+
+    const sortGoods = useCallback((field, order) => {
         const byField = (field) => {
             return (a, b) => a[field] > b[field] ? 1 : -1;
-        }
+        }        
         let forSort = products.slice(0);
-        let result = [];
-        switch (i) {
-            case 0:
-                result = forSort;
-                break;
-
-            case 1:
-                result = forSort.sort(byField("name"));
-                break;
-
-            case 2:
-                result = forSort.sort(byField("name")).reverse();
-                break;
-
-            case 3:                
-                result = forSort.sort(byField("price")).reverse();
-                break;
-
-            case 4:
-                result = forSort.sort(byField("price"));
-                break;
-        
-            default:
-                result = forSort;
-                break;
-        }
+        let result = forSort.sort(byField(field));
+        if (order === 'desc') {
+            result.reverse();
+        }        
         return result;
     }, [products])
 
-    useEffect(() => {        
-        setGoods(sortGoods(sortId));                   
-    }, [sortGoods, sortId]);
+    useEffect(() => {
+        const index = sortings.indexOf(sortings.find((sort)=>sort.field === field && sort.order === order));
+        setSortId(index);
+        if (field && order) {
+            setGoods(sortGoods(field, order));            
+        } else {
+            setGoods(products);
+        }
+    }, [sortings, field, order, sortGoods, products]);
 
     return (
         <section className="main__category cat">
@@ -52,12 +72,12 @@ function Category({title, products, onAdd}){
                 <h2 className="cat__title">{title}</h2>                
                 <div className="cat__filters filters">
                     <div className="filter__count">
-                        {goods.length > 1 ? (goods.length + " items") : (goods.length + " item")}
+                        {goods.length === 1 ? (goods.length + " item") : (goods.length + " items")}
                     </div>
-                    <Filter title={"sort by"} values={sortings} selected={sortId} onFilter={setSortId}/>
+                    <Sort values={sortings} selected={sortId} setSelected={setSortId} setSearchParams={setSearchParams}/>
                 </div>
             </div>
-            <CatProducts products={goods} onAdd={onAdd}/>
+            <CatProducts products={goods}/>
             
         </section>
     );

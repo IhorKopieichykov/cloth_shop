@@ -2,11 +2,11 @@ $black: #1D1F22;
 $green: #5ECE7B;
 $grey: #EEEEEE;
 
-.filter {
+.sort {
     position: relative;
     width: 200px;
 }
-.filter__title {
+.sort__title {
     text-transform: lowercase;
     font-size: 14px;
     font-weight: 600;
@@ -15,7 +15,7 @@ $grey: #EEEEEE;
         text-transform: uppercase;
     }
 }
-.filter__placeholder {    
+.sort__placeholder {    
     display: flex;
     align-items: center;
     justify-content: space-between;    
@@ -41,7 +41,7 @@ $grey: #EEEEEE;
         transition: all .3s ease;
     }
 }
-.filter__values {
+.sort__values {
     position: absolute;
     // visibility: hidden;
     width: 100%;
@@ -62,7 +62,7 @@ $grey: #EEEEEE;
         transform: scaleY(1); 
     }
 }
-.filter__value {
+.sort__value {
     text-transform: capitalize;
     user-select: none;
     cursor: pointer;

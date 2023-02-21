@@ -3,7 +3,7 @@ import Main from '../components/App/Main/Main';
 import { useContext, useEffect } from 'react';
 import { ProductsContext } from '../components/ProductsContext/ProductsContext';
 
-function Kids({onAdd}){
+function Kids(){
     const { products } = useContext(ProductsContext);
     const kidsProducts = products.filter(item => item.category === 'kids');
     useEffect(() => {
@@ -15,7 +15,7 @@ function Kids({onAdd}){
     }, [])
     return (
         <Main>
-            <Category title="Kids" products={kidsProducts} onAdd={onAdd}/>
+            <Category title="Kids" products={kidsProducts}/>
         </Main>
     );
 }
