@@ -7,7 +7,7 @@ import Language from './Language/Language';
 import Search from './Search/Search';
 import { Link } from 'react-router-dom';
 
-function Header({cart, onUpdate}) {
+function Header() {
     const menuItems = [
         {
             title: "home",
@@ -37,7 +37,7 @@ function Header({cart, onUpdate}) {
                 <div className='header__center'></div>
                 <Search />
                 <div className='header__options'>
-                    <HeaderCart cart={cart} onUpdate={onUpdate}/>
+                    <HeaderCart />
                     <Currency />
                     <Language /> 
                 </div>

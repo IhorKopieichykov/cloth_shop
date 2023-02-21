@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import useLocalStorage from '../../../../helpers/useLocalStorage';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { CartContext } from '../../../CartContext/CartContext';
 import HCartItem from './HCartItem/HCartItem';
 import './HeaderCart.scss';
 
-function HeaderCart({cart, onUpdate}){
+function HeaderCart(){
     let [cartIsShown, setCartIsShown] = useState(false);   
     const cartRef = useRef();
     function toggleCart(){
@@ -17,18 +17,19 @@ function HeaderCart({cart, onUpdate}){
         }
         document.addEventListener('mousedown', handler);
         return () => document.removeEventListener('mousedown', handler);
-    });
+    });    
+
+    const {cart, setItems} = useContext(CartContext);
+
     function getItemsCount(){
         return cart.reduce((acc, item) => (acc += item.count), 0);
     }
 
-    const [products, setProducts] = useLocalStorage('cart', []);
-
     const updateCartItem = (indexOfItem, newItem) => {
 		if (newItem.count <= 0) {
-			setProducts([...products.slice(0, indexOfItem), ...products.slice(indexOfItem + 1)]);
+			setItems([...cart.slice(0, indexOfItem), ...cart.slice(indexOfItem + 1)]);
 		} else {
-			setProducts([...products.slice(0, indexOfItem), newItem, ...products.slice(indexOfItem + 1)]);
+			setItems([...cart.slice(0, indexOfItem), newItem, ...cart.slice(indexOfItem + 1)]);
 		}		
 	}
 
@@ -47,7 +48,7 @@ function HeaderCart({cart, onUpdate}){
                 {cart.length 
                     ?   <div className="hcart__items">
                             {cart.map((item, index) => 
-                                <HCartItem currItem={item} key={index} index={index} onUpdate={onUpdate} updateCartItem={updateCartItem}/> 
+                                <HCartItem currItem={item} key={index} index={index} onUpdate={updateCartItem}/> 
                             )}                                               
                         </div>
                     :   <div className='hcart__empty'>

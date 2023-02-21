@@ -1,8 +1,9 @@
-import useLocalStorage from "../../../../../helpers/useLocalStorage";
+import { useContext } from "react";
+import { CartContext } from "../../../../CartContext/CartContext";
 import "./CatProducts.scss";
 
-function CatProducts({products, onAdd}){
-    const [cart, setCart] = useLocalStorage('cart', []);
+function CatProducts({products}){
+    const { cart, setItems } = useContext(CartContext);
 
     const updateItemCount = (searchItem, count) => {
 		const indexOfItem = cart.indexOf(searchItem);
@@ -11,14 +12,14 @@ function CatProducts({products, onAdd}){
 			...currItem,
 			"count": currItem.count + count
 		}
-		setCart([...cart.slice(0, indexOfItem), newItem, ...cart.slice(indexOfItem + 1)]);
+		setItems([...cart.slice(0, indexOfItem), newItem, ...cart.slice(indexOfItem + 1)]);
 	}
 	const addToCart = (item) => {
 		const searchItem = cart.find(i => i.id === item.id && i.color === item.color && i.size === item.size);
 		if (searchItem) {
 			updateItemCount(searchItem, 1);			
 		} else{
-			setCart([...cart, item]);
+			setItems([...cart, item]);
 		}		
 	}
 	
@@ -38,7 +39,6 @@ function CatProducts({products, onAdd}){
                                 "color": product.colors[0],
                                 "count": 1
                             }
-                            onAdd(newItem);
                             addToCart(newItem);
                             }}>
                         <i className='ic_empty_cart'></i>

@@ -21,10 +21,10 @@ export const ProductsProvider = ({children}) => {
 
     const contextValue = useMemo(() => (
         {
-          products,
-          setProducts,
-          isLoading,
-          setIsLoading,
+            products,
+            setProducts,
+            isLoading,
+            setIsLoading,
         }
       ), [isLoading, products]);
     return (
