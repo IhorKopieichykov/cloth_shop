@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
+import { ProductsProvider } from '../ProductsContext/ProductsContext';
 import Layout from './Layout/Layout';
-import women_products from "../../products/women_products.json";
-import men_products from "../../products/men_products.json";
-import kids_products from "../../products/kids_products.json";
 import Home from '../../pages/Home';
 import Women from '../../pages/Women';
 import Men from '../../pages/Men';
 import Kids from '../../pages/Kids';
 
 export default function App () {
-	let [cart, setCart] = useState([]);
-	let [products, setProducts] = useState({
-		women: women_products,
-		men: men_products,
-		kids: kids_products,
-	});	
+	let [cart, setCart] = useState([]);	
 
 	const updateItemCount = (searchItem, count) => {
 		const indexOfItem = cart.indexOf(searchItem);
@@ -44,20 +37,15 @@ export default function App () {
 	}
 	
 	return (
-		<>
+		<ProductsProvider>
 			<Routes>
 				<Route path='/' element={<Layout cart={cart} onUpdate={updateCartItem}/>}>
 					<Route index element={<Home/>}/>
-					<Route path='women' element={<Women products={products.women} onAdd={addToCart}/>}/>
-					<Route path='men' element={<Men products={products.men} onAdd={addToCart}/>}/>
-					<Route path='kids' element={<Kids products={products.kids} onAdd={addToCart}/>}/>
+					<Route path='women' element={<Women onAdd={addToCart}/>}/>
+					<Route path='men' element={<Men onAdd={addToCart}/>}/>
+					<Route path='kids' element={<Kids onAdd={addToCart}/>}/>
 				</Route>
 			</Routes>			
-		</>
-		// <div className='wrapper'>    
-		// 	<Header cart={cart} onUpdate={updateCartItem}/>
-		// 	<Main products={products.women} onAdd={addToCart}/>
-		// 	<Footer/>
-		// </div>
+		</ProductsProvider>
 	);
 }

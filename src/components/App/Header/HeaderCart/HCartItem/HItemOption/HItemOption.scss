@@ -17,8 +17,10 @@ $green: #5ECE7B;
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     -moz-column-gap: 8px;
          column-gap: 8px;
+    row-gap: 8px;
 }
 .cart_item__size-select__option {
     width: 24px;

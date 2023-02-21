@@ -1,20 +1,20 @@
 import "./Category.scss";
 import CatProducts from "./CatProducts/CatProducts";
 import Filter from './Filter/Filter';
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 
 function Category({title, products, onAdd}){
-    const sortings = useMemo(()=>["Default", "Name", "Newest", "Price (High-Low)", "Price (Low-High)", "Rating"], []);
+    const sortings = useMemo(()=>["Default", "Name (A-z)", "Name (z-A)", "Price (High-Low)", "Price (Low-High)"], []);
     const [sortId, setSortId] = useState(0);
     const [goods, setGoods] = useState(products);    
 
-    useEffect(() => {
+    const sortGoods = useCallback((i) => {
         const byField = (field) => {
             return (a, b) => a[field] > b[field] ? 1 : -1;
         }
         let forSort = products.slice(0);
         let result = [];
-        switch (sortId) {
+        switch (i) {
             case 0:
                 result = forSort;
                 break;
@@ -24,7 +24,7 @@ function Category({title, products, onAdd}){
                 break;
 
             case 2:
-                result = forSort.sort(byField("name"));
+                result = forSort.sort(byField("name")).reverse();
                 break;
 
             case 3:                
@@ -34,28 +34,31 @@ function Category({title, products, onAdd}){
             case 4:
                 result = forSort.sort(byField("price"));
                 break;
-
-            case 5:
-                result = forSort.sort(byField("name"));
-                break;
         
             default:
                 result = forSort;
                 break;
         }
-        setGoods(result);                   
-    }, [products, sortId]);
+        return result;
+    }, [products])
+
+    useEffect(() => {        
+        setGoods(sortGoods(sortId));                   
+    }, [sortGoods, sortId]);
 
     return (
         <section className="main__category cat">
             <div className="cat__header">
-                <h2 className="cat__title">{title}</h2>
-            </div>  
-            <div className="cat__filters filters">
-                <Filter title={"sort by"} values={sortings} selected={sortId} onFilter={setSortId}/>
-            </div>          
-            
+                <h2 className="cat__title">{title}</h2>                
+                <div className="cat__filters filters">
+                    <div className="filter__count">
+                        {goods.length > 1 ? (goods.length + " items") : (goods.length + " item")}
+                    </div>
+                    <Filter title={"sort by"} values={sortings} selected={sortId} onFilter={setSortId}/>
+                </div>
+            </div>
             <CatProducts products={goods} onAdd={onAdd}/>
+            
         </section>
     );
 }

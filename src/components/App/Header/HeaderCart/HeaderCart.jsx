@@ -1,15 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
+import useLocalStorage from '../../../../helpers/useLocalStorage';
 import HCartItem from './HCartItem/HCartItem';
 import './HeaderCart.scss';
 
 function HeaderCart({cart, onUpdate}){
     let [cartIsShown, setCartIsShown] = useState(false);   
     const cartRef = useRef();
-
     function toggleCart(){
         setCartIsShown(cartIsShown = !cartIsShown);
     }
-
     useEffect(() => {        
         const handler = (e) => {
             if (!cartRef.current.contains(e.target)) {
@@ -19,10 +18,19 @@ function HeaderCart({cart, onUpdate}){
         document.addEventListener('mousedown', handler);
         return () => document.removeEventListener('mousedown', handler);
     });
-
     function getItemsCount(){
         return cart.reduce((acc, item) => (acc += item.count), 0);
     }
+
+    const [products, setProducts] = useLocalStorage('cart', []);
+
+    const updateCartItem = (indexOfItem, newItem) => {
+		if (newItem.count <= 0) {
+			setProducts([...products.slice(0, indexOfItem), ...products.slice(indexOfItem + 1)]);
+		} else {
+			setProducts([...products.slice(0, indexOfItem), newItem, ...products.slice(indexOfItem + 1)]);
+		}		
+	}
 
     return (  
         <div className="header__option-cart" ref={cartRef}>
@@ -39,7 +47,7 @@ function HeaderCart({cart, onUpdate}){
                 {cart.length 
                     ?   <div className="hcart__items">
                             {cart.map((item, index) => 
-                                <HCartItem currItem={item} key={index} index={index} onUpdate={onUpdate}/> 
+                                <HCartItem currItem={item} key={index} index={index} onUpdate={onUpdate} updateCartItem={updateCartItem}/> 
                             )}                                               
                         </div>
                     :   <div className='hcart__empty'>
