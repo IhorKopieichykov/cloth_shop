@@ -1,15 +1,12 @@
 import React from "react";
+import Breadcrumbs from "./Breadcrumbs/Breadcrumbs";
 import './Main.scss';
-import Slider from "./Slider/Slider";
-import PromoProducts from "./PromoProducts/PromoProducts";
-import PromoCategories from "./PromoCategories/PromoCategories";
-import Category from "./Category/Category";
-
 
 export default function Main({children}){
     return (
             <main className="main">
                 <div className="main__container">
+                    <Breadcrumbs/>
                     {children}
                 </div>
             </main>

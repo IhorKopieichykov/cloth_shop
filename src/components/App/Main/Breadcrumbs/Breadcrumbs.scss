@@ -1,0 +1,49 @@
+$black: #1D1F22;
+$green: #5ECE7B;
+$grey: #777777;
+
+.main__breadcrumbs {
+    padding: 20px 20px 10px;
+}
+.breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.breadcrumb {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.6;
+    color: $grey;
+    font-weight: 400;
+    text-decoration: underline;
+    text-transform: capitalize;
+    user-select: none;
+    transition: all .1s ease;
+    &:hover{
+        cursor: pointer;
+        color: $green;
+    }
+    &.current{
+        font-weight: 500;
+        font-size: 16px;
+        text-decoration: none;
+        &:hover{
+            cursor: default;
+            color: $grey;
+            text-decoration: none;            
+        }
+    }  
+    &.home{
+        font-weight: 500;
+        font-size: 16px;     
+    }   
+}
+.breadcrumb__arrow{
+    line-height: 1;
+    font-size: 16px;
+    display: flex;
+    align-items: flex-end;
+}

@@ -1,7 +1,7 @@
 import "./Category.scss";
 import CatProducts from "./CatProducts/CatProducts";
 import Sort from './Sort/Sort';
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 
 function Category({title, products}){
