@@ -21,13 +21,6 @@ function HeaderCart(){
     });    
 
     const {cart, setItems} = useContext(CartContext);
-    
-    // const [items, setItems] = useLocalStorage('cart', []);
-    // const [cart, setCart] = useState(items);
-
-    // useEffect(()=>{
-    //     setCart(items);
-    // }, [items])
 
     function getItemsCount(){
         return cart.reduce((acc, item) => (acc += item.count), 0);

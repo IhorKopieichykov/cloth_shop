@@ -6,6 +6,7 @@ import { ProductsContext } from '../components/ProductsContext/ProductsContext';
 function Kids(){
     const { products } = useContext(ProductsContext);
     const kidsProducts = products.filter(item => item.category === 'kids');
+    
     useEffect(() => {
         window.scrollTo({
             top: 0,

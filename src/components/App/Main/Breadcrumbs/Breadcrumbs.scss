@@ -12,6 +12,11 @@ $grey: #777777;
     justify-content: flex-start;
     gap: 10px;
 }
+.breadcrumbs__item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 .breadcrumb {
     display: inline-block;
     font-size: 14px;
@@ -28,7 +33,6 @@ $grey: #777777;
     }
     &.current{
         font-weight: 500;
-        font-size: 16px;
         text-decoration: none;
         &:hover{
             cursor: default;

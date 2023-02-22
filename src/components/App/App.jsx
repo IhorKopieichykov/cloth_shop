@@ -8,6 +8,7 @@ import Home from '../../pages/Home';
 import Women from '../../pages/Women';
 import Men from '../../pages/Men';
 import Kids from '../../pages/Kids';
+import ProductPage from '../../pages/ProductPage';
 
 export default function App () {	
 	return (
@@ -19,6 +20,7 @@ export default function App () {
 						<Route path='women' element={<Women />}/>
 						<Route path='men' element={<Men />}/>
 						<Route path='kids' element={<Kids />}/>
+						<Route path=':category/:productId' element={<ProductPage />}/>
 					</Route>
 				</Routes>
 			</CartProvider>

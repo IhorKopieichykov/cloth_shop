@@ -6,6 +6,7 @@ import { ProductsContext } from '../components/ProductsContext/ProductsContext';
 function Women(){
     const { products } = useContext(ProductsContext);
     const womenProducts = useMemo(() => products.filter(item => item.category === 'women'), [products]);
+    
     useEffect(() => {
         window.scrollTo({
             top: 0,

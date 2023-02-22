@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../../../CartContext/CartContext";
 import "./CatProducts.scss";
 
@@ -27,12 +28,13 @@ function CatProducts({products}){
     return (
         <div className="cat__products">
             {products.map(product => 
-                <div className="cat__product" key={product.id}>
+                <Link to={`${product.id}`} className="cat__product" key={product.id}>
                     <div className="cat__product_image">
                         <img src={require(`../../../../../images/products/${product.category}/${product.id}/${product.images[0]}`)} alt={product.id} />
                     </div>                                
                     <div className="cat__product_addtocart" 
-                        onClick={() => {
+                        onClick={(e) => {
+                            e.preventDefault();
                             const newItem = {
                                 ...product,
                                 "size": product.sizes[0],
@@ -46,7 +48,7 @@ function CatProducts({products}){
                     <div className="cat__product_title">{product.name}</div>
                     <div className="cat__product_price">${product.price.toFixed(2)}</div>
                     
-                </div>
+                </Link>
             )}
         </div>
     );
