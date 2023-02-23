@@ -186,19 +186,22 @@ $grey: #EEEEEE;
     gap: 10px;
 }
 .header__cart-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 140px;
     height: 40px;
     font-weight: 700;
     font-size: 14px;
     line-height: 120%;
     text-transform: uppercase;
+    transition: all .2s ease;
 }
 .header__cart-button[id="view"]{
     background-color: #FFFFFF;
     border: 1px solid $black;
     color: $black;
     box-shadow: 2px 2px 5px rgb(136, 136, 136);
-    transition: all .2s ease;
     &:hover{
         background-color: $black;
         color: #FFFFFF;
@@ -211,7 +214,6 @@ $grey: #EEEEEE;
     background-color: $green;
     border: 1px solid $darkgreen;    
     box-shadow: 2px 2px 5px rgb(136, 136, 136);
-    transition: all .2s ease;
     &:hover{
         background-color: $green;
         border: none;

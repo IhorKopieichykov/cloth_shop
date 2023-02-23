@@ -1,35 +1,33 @@
 $black: #1D1F22;
 $green: #5ECE7B;
 
-.hcart__item_counter {
+.cart__item_counter {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;    
+    justify-content: space-between;
     margin: 0px 8px 0px 0px;
 }
-.hcart__item_counter__option {
-    width: 24px;
-    height: 24px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-style: normal;
-    text-align: center;
-    vertical-align: middle;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.05;
+.cart__item_counter__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
     border: 1px solid $black;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 36px;
     user-select: none;
-    
     &:hover{
         cursor: pointer;
         background-color: $black;
         color: #FFFFFF;
     }
 }
-.hcart__item_counter__count {
+.cart__item_counter__count {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 160%;
 }

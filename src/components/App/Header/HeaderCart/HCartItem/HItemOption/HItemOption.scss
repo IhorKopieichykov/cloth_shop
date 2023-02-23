@@ -22,7 +22,7 @@ $green: #5ECE7B;
          column-gap: 8px;
     row-gap: 8px;
 }
-.cart_item__size-select__option {
+.hcart_item__size-select__option {
     width: 24px;
     height: 24px;
     border: 1px solid $black;
@@ -33,6 +33,7 @@ $green: #5ECE7B;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.6;
+    transition: all .2s ease;
     &:hover{
         cursor: pointer;
         background-color: $black;
@@ -43,7 +44,7 @@ $green: #5ECE7B;
         color: #FFFFFF;
     }
 }
-.cart_item__color-select__option {
+.hcart_item__color-select__option {
     width: 20px;
     height: 20px;
     border: 1px solid $black;    

@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './HItemCounter.scss';
 
 function HItemCounter({item, index, onUpdate}){

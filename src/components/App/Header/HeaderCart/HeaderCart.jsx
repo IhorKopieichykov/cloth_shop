@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef, useContext, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 // import useLocalStorage from '../../../../helpers/useLocalStorage';
 import { CartContext } from '../../../CartContext/CartContext';
 import HCartItem from './HCartItem/HCartItem';
@@ -22,9 +23,12 @@ function HeaderCart(){
 
     const {cart, setItems} = useContext(CartContext);
 
-    function getItemsCount(){
+    const getItemsCount = useCallback(() => {
         return cart.reduce((acc, item) => (acc += item.count), 0);
-    }
+    }, [cart]);
+    const getTotalPrice = useCallback(()=>{
+        return cart.reduce((prev, curr) => prev + curr.price*curr.count, 0).toFixed(2)
+    }, [cart]);
 
     const updateCartItem = (indexOfItem, newItem) => {
 		if (newItem.count <= 0) {
@@ -62,13 +66,13 @@ function HeaderCart(){
                     <div className="header__cart_total-title">Total</div>
                     <div className="header__cart_total-value">$
                         {
-                            cart.reduce((prev, curr) => prev + curr.price*curr.count, 0).toFixed(2)
+                            getTotalPrice()
                         }
                     </div>                            
                 </div>
                 <div className="header__cart-buttons">
-                    <button className="header__cart-button" id='view'>view bag</button>
-                    <button className="header__cart-button" id="check">check out</button>
+                    <Link to={'cart'} className="header__cart-button" id='view' onClick={()=>setCartIsShown(false)}>view bag</Link>
+                    <button className="header__cart-button" id="check" onClick={()=>setCartIsShown(false)}>check out</button>
                 </div>
             </div>
         </div>       
