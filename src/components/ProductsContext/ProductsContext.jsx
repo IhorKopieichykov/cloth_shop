@@ -17,6 +17,9 @@ export const ProductsProvider = ({children}) => {
 			setProducts(arr);
             setIsLoading(false);
 		})
+
+        // setProducts(getProductsFromAPI());
+        // setIsLoading(false);
 	}, [])
 
     const contextValue = useMemo(() => (

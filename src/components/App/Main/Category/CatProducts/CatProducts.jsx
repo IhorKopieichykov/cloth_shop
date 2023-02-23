@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../../CartContext/CartContext";
+import CatProduct from "./CatProduct/CatProduct";
 import "./CatProducts.scss";
 
 function CatProducts({products}){
@@ -23,32 +24,11 @@ function CatProducts({products}){
 			setItems([...cart, item]);
 		}		
 	}
-	
 
     return (
         <div className="cat__products">
-            {products.map(product => 
-                <Link to={`${product.id}`} className="cat__product" key={product.id}>
-                    <div className="cat__product_image">
-                        <img src={require(`../../../../../images/products/${product.category}/${product.id}/${product.images[0]}`)} alt={product.id} />
-                    </div>                                
-                    <div className="cat__product_addtocart" 
-                        onClick={(e) => {
-                            e.preventDefault();
-                            const newItem = {
-                                ...product,
-                                "size": product.sizes[0],
-                                "color": product.colors[0],
-                                "count": 1
-                            }
-                            addToCart(newItem);
-                            }}>
-                        <i className='ic_empty_cart'></i>
-                    </div>
-                    <div className="cat__product_title">{product.name}</div>
-                    <div className="cat__product_price">${product.price.toFixed(2)}</div>
-                    
-                </Link>
+            {products.map((product, index) => 
+                <CatProduct key={index} product={product} addToCart={addToCart} />
             )}
         </div>
     );

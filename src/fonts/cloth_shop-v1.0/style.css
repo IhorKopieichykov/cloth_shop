@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'cloth_shop';
-  src:  url('fonts/cloth_shop.eot?8g5psr');
-  src:  url('fonts/cloth_shop.eot?8g5psr#iefix') format('embedded-opentype'),
-    url('fonts/cloth_shop.ttf?8g5psr') format('truetype'),
-    url('fonts/cloth_shop.woff?8g5psr') format('woff'),
-    url('fonts/cloth_shop.svg?8g5psr#cloth_shop') format('svg');
+  src:  url('fonts/cloth_shop.eot?dhw31s');
+  src:  url('fonts/cloth_shop.eot?dhw31s#iefix') format('embedded-opentype'),
+    url('fonts/cloth_shop.ttf?dhw31s') format('truetype'),
+    url('fonts/cloth_shop.woff?dhw31s') format('woff'),
+    url('fonts/cloth_shop.svg?dhw31s#cloth_shop') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -57,4 +57,7 @@ i {
 }
 .ic_angle-down:before {
   content: "\f107";
+}
+.ic_checkmark:before {
+  content: "\ea10";
 }

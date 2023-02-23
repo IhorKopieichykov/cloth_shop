@@ -52,6 +52,7 @@ export default function Product({product, isLoading}) {
 			setItems([...cart, newItem]);
 		}
     }, [cart, product, setItems, updateItemCount])
+    const [added, setAdded] = useState(false);
 
 
     return (product 
@@ -87,11 +88,24 @@ export default function Product({product, isLoading}) {
                         </div>
                         <div className="product__addtocart">
                             <button 
-                            className="product__addtocart_button" 
+                            className={`product__addtocart_button ${added ? "clicked" : ''}`} 
                             disabled={disabled}                            
                             title={disabled ? "Choose the options above!" : ''}
-                            onClick={()=>addToCart(size, color)}>
-                                add to cart
+                            onClick={()=>{
+                                setAdded(true);
+                                const timeout = setTimeout(() => {
+                                    setAdded(false);
+                                    clearTimeout(timeout);
+                                }, 1500)
+                                addToCart(size, color);
+                            }}>
+                                {
+                                    !added 
+                                    ?   "add to cart"
+                                    :   (<><span>
+                                            <i className="ic_checkmark"></i>
+                                        </span> added </>)
+                                }
                             </button>
                         </div>            
                     </div>   
