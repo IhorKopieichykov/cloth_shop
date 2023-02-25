@@ -2,9 +2,10 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../../CartContext/CartContext";
 import CatProduct from "./CatProduct/CatProduct";
+import CatProductSkeleton from "./CatProductSkeleton/CatProductSkeleton";
 import "./CatProducts.scss";
 
-function CatProducts({products}){
+function CatProducts({products, isLoading}){
     const { cart, setItems } = useContext(CartContext);
 
     const updateItemCount = (searchItem, count) => {
@@ -25,11 +26,25 @@ function CatProducts({products}){
 		}		
 	}
 
+	const showSkeleton = (count) => {
+		let counter = [];
+		for (let i = 0; i < count; i++) {
+			counter.push(i+1);	
+		}
+		return (
+			counter.map((number) => <CatProductSkeleton key={number}/>)
+		);
+	}
+
     return (
         <div className="cat__products">
-            {products.map((product, index) => 
-                <CatProduct key={index} product={product} addToCart={addToCart} />
-            )}
+			{
+				isLoading
+				? 	showSkeleton(8)
+				: 	products.map((product, index) => 
+						<CatProduct key={index} product={product} addToCart={addToCart} />
+					)
+			}
         </div>
     );
 }

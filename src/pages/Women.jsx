@@ -1,12 +1,8 @@
 import Category from '../components/App/Main/Category/Category';
 import Main from '../components/App/Main/Main';
-import { useContext, useEffect, useMemo } from 'react';
-import { ProductsContext } from '../components/ProductsContext/ProductsContext';
+import { useEffect, useMemo } from 'react';
 
 function Women(){
-    const { products } = useContext(ProductsContext);
-    const womenProducts = useMemo(() => products.filter(item => item.category === 'women'), [products]);
-    
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -16,7 +12,7 @@ function Women(){
     }, [])
     return (
         <Main>
-            <Category title="Women" products={womenProducts} />
+            <Category title="Women" category={"women"} />
         </Main>
     );
 }

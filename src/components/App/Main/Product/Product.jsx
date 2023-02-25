@@ -10,7 +10,14 @@ export default function Product({product, isLoading}) {
     const [size, setSize] = useState('');
     const [color, setColor] = useState('');
     const [disabled, setDisabled] = useState(true);
-  
+
+    
+    useEffect(()=>{
+        console.log(product.images[0]);
+        const img = product.images[0];
+        setImage(img);
+    }, [product])
+    
     const setColorImage = useCallback((color) => {
         setColor(color);
         if (color) {
@@ -64,7 +71,8 @@ export default function Product({product, isLoading}) {
                                     product?.images.map((img, index)=>(
                                         <li key={index}
                                         className={img === image ? "selected" : ''}>
-                                            <img src={require(`../../../../images/products/${product.category}/${product.id}/${img}`)} alt="prod_img" className="product__select_image" 
+                                            <img src={require(`../../../../images/products/${product?.category}/${product?.id}/${img}`)} 
+                                            alt="prod_img" className="product__select_image" 
                                             onClick={()=>setImage(img)}/>
                                         </li>
                                     ))
@@ -72,7 +80,8 @@ export default function Product({product, isLoading}) {
                             </ul>
                         </div>
                         <div className="product__preview_photo product__photo">
-                            <img src={require(`../../../../images/products/${product.category}/${product.id}/${image}`)} alt="prod_img" className="product__photo_image" />
+                            <img src={require(`../../../../images/products/${product?.category}/${product?.id}/${image}`)} 
+                            alt="prod_img" className="product__photo_image" />
                         </div>
                     </div>
                     <div className="product__summary">    

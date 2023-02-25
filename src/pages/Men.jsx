@@ -1,11 +1,8 @@
 import Category from '../components/App/Main/Category/Category';
 import Main from '../components/App/Main/Main';
-import { useEffect, useContext } from 'react';
-import { ProductsContext } from '../components/ProductsContext/ProductsContext';
+import { useEffect } from 'react';
 
 function Men(){
-    const { products } = useContext(ProductsContext);
-    const menProducts = products.filter(item => item.category === 'men');
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -15,7 +12,7 @@ function Men(){
     }, [])
     return (
         <Main>
-            <Category title="Men" products={menProducts}/>
+            <Category title="Men" category={"men"}/>
         </Main>
     );
 }

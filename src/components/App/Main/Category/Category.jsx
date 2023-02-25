@@ -1,11 +1,14 @@
 import "./Category.scss";
 import CatProducts from "./CatProducts/CatProducts";
 import Sort from './Sort/Sort';
-import { useState, useMemo } from "react";
+import { ProductsContext } from '../../../ProductsContext/ProductsContext';
+import { useContext, useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 
-function Category({title, products}){
-    const [goods, setGoods] = useState(products);  
+function Category({title, category}){
+    const { products, isLoading } = useContext(ProductsContext);
+    const catProducts = useMemo(() => products.filter(item => item.category === category), [products, category]);
+    const [goods, setGoods] = useState(catProducts);  
     const [searchParams, setSearchParams] = useSearchParams();
 
     const field = useMemo(() => searchParams.get('sortBy') || '', [searchParams]);
@@ -19,10 +22,10 @@ function Category({title, products}){
                     <div className="filter__count">
                         {goods.length === 1 ? (goods.length + " item") : (goods.length + " items")}
                     </div>
-                    <Sort products={products} setGoods={setGoods} field={field} order={order} setSearchParams={setSearchParams}/>
+                    <Sort products={catProducts} setGoods={setGoods} field={field} order={order} setSearchParams={setSearchParams}/>
                 </div>
-            </div>
-            <CatProducts products={goods}/>            
+            </div>            
+            <CatProducts products={goods} isLoading={isLoading}/>
         </section>
     );
 }
