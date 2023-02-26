@@ -14,8 +14,7 @@ function Home(){
         })
     }, [])
     return (
-        <Main>
-            <Slider/>
+        <Main outOfCont={<Slider/>}>
             <PromoProducts/>
             <PromoCategories/>
             <PromoProducts/>
