@@ -10,6 +10,7 @@ import Men from '../../pages/Men';
 import Kids from '../../pages/Kids';
 import ProductPage from '../../pages/ProductPage';
 import CartPage from '../../pages/CartPage';
+import SearchPage from '../../pages/SearchPage';
 
 export default function App () {	
 	return (
@@ -23,7 +24,7 @@ export default function App () {
 						<Route path='kids' element={<Kids />}/>
 						<Route path=':category/:productId' element={<ProductPage />}/>
 						<Route path='cart' element={<CartPage />}/>
-
+						<Route path='search' element={<SearchPage />}/>
 					</Route>
 				</Routes>
 			</CartProvider>

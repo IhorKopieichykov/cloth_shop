@@ -46,9 +46,9 @@ function HeaderCart(){
             </div>  
             {/* <div className={`header__cart_bg ${cartIsShown ? "show" : ""}`} onClick={toggleCart}></div> */}
             <div className={`header__cart_window hcart ${cartIsShown ? "show" : "hide"}`}>
-                <div className="hcart__title"><b>My bag</b><span><b>, </b> 
+                <div className="hcart__title"><b>My bag</b><div><b>, </b> 
                     {getItemsCount()} {cart.length === 1 ? "item" : "items"}
-                    </span>
+                    </div>
                 </div>
                 {cart.length 
                     ?   <div className="hcart__items">
@@ -58,7 +58,7 @@ function HeaderCart(){
                         </div>
                     :   <div className='hcart__empty'>
                             <i className='ic_empty_cart'></i> <br/>
-                            <span>Cart is empty</span>
+                            <div>Cart is empty</div>
                         </div>
                 }
                 

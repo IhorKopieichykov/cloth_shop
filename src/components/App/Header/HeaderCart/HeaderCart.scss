@@ -130,7 +130,8 @@ $grey: #EEEEEE;
     margin: 16px 0px;
     // font-weight: 700;
     // font-size: 16px;
-    & span{
+    & div{
+        display: inline-block;
         font-weight: 500;
     }
 }
@@ -144,7 +145,8 @@ $grey: #EEEEEE;
     padding: 10% 0;
     font-size: 42px;
     color: rgba(0, 0, 0, 0.2);
-    span{
+    div{
+        display: inline-block;
         font-size: 18px;
         font-weight: 600;
     }

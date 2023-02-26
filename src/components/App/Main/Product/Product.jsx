@@ -6,26 +6,31 @@ import ProductOption from './ProductOption/ProductOption';
 
 export default function Product({product, isLoading}) {
     const {cart, setItems} = useContext(CartContext);
-    const [image, setImage] = useState(product.images[0]);
+    const [imageIndex, setImageIndex] = useState(0);
     const [size, setSize] = useState('');
     const [color, setColor] = useState('');
     const [disabled, setDisabled] = useState(true);
-
     
     useEffect(()=>{
-        console.log(product.images[0]);
-        const img = product.images[0];
-        setImage(img);
+        setImageIndex(0);
     }, [product])
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
+    }, [])
     
     const setColorImage = useCallback((color) => {
         setColor(color);
         if (color) {
-            setImage(product.images[product.colors.indexOf(color)]);            
+            setImageIndex(product.colors.indexOf(color));            
         } else {
-            setImage(product.images[0]);
+            setImageIndex(0);
         }
-    }, [product.colors, product.images])
+    }, [product.colors])
 
     useEffect(()=>{
         if (color && size) {
@@ -70,17 +75,17 @@ export default function Product({product, isLoading}) {
                                 {
                                     product?.images.map((img, index)=>(
                                         <li key={index}
-                                        className={img === image ? "selected" : ''}>
+                                        className={index === imageIndex ? "selected" : ''}>
                                             <img src={require(`../../../../images/products/${product?.category}/${product?.id}/${img}`)} 
                                             alt="prod_img" className="product__select_image" 
-                                            onClick={()=>setImage(img)}/>
+                                            onClick={()=>setImageIndex(index)}/>
                                         </li>
                                     ))
                                 }
                             </ul>
                         </div>
                         <div className="product__preview_photo product__photo">
-                            <img src={require(`../../../../images/products/${product?.category}/${product?.id}/${image}`)} 
+                            <img src={require(`../../../../images/products/${product?.category}/${product?.id}/${product?.images[imageIndex]}`)} 
                             alt="prod_img" className="product__photo_image" />
                         </div>
                     </div>
@@ -111,9 +116,11 @@ export default function Product({product, isLoading}) {
                                 {
                                     !added 
                                     ?   "add to cart"
-                                    :   (<><span>
-                                            <i className="ic_checkmark"></i>
-                                        </span> added </>)
+                                    :   (
+                                            <>
+                                                <div><i className="ic_checkmark"></i></div> added 
+                                            </>
+                                        )
                                 }
                             </button>
                         </div>            

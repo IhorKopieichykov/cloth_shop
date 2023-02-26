@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { createSearchParams, Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ProductsContext } from '../../../ProductsContext/ProductsContext';
 import './Search.scss';
 
@@ -25,13 +25,24 @@ function Search(){
         return () => document.removeEventListener('mousedown', handler);
     });
 
+    const navigate = useNavigate();
+
     const handlerSearchButton = useCallback((e) => {
-        if (query.length > 0) {
-            
+        if (query.trim().length >= 2) {
+            const searchParams = {
+                "query": query.trim()
+            };
+            setQuery('');
+            setWinOpened(false);
+            inputRef.current.blur();
+            navigate({
+                pathname: '/search',
+                search: `?${createSearchParams(searchParams)}`
+            });
         } else {
             inputRef.current.focus();
         }
-    }, [query.length])
+    }, [navigate, query])
     
     const handlerClearButton = useCallback((e) => {
         setQuery('');
@@ -41,19 +52,22 @@ function Search(){
     const [queryProducts, setQueryProducts] = useState([]);
 
     useEffect(() => {
-        let qProducts = products.filter(product => product.name.toLowerCase().includes(query));
-        if (query.length >= 2) {
+        let qProducts = products.filter(product => product.name.toLowerCase().includes(query.trim()));
+        if (query.trim().length >= 2) {
             setQueryProducts(qProducts);
-        }
-        // setQueryProducts(qProducts);        
+        }      
     }, [query, products])
 
     const handlerProductclick = (e) => {
-        // e.preventDefault();
-        // inputRef.current.blur();
         setWinOpened(false);
         setQuery('');
     }
+
+    const handlerEnterKey = useCallback((e) => {
+        if (e.key === "Enter") {
+            handlerSearchButton();
+        }
+    }, [handlerSearchButton])
 
 
     return (
@@ -68,8 +82,9 @@ function Search(){
                 value={query}
                 ref={inputRef}
                 tabIndex="1"
-                onChange={(e)=>setQuery(e.target.value)}
-                onFocus={()=>setWinOpened(true)}/>
+                onChange={(e)=>setQuery(e.target.value.toLowerCase())}
+                onFocus={()=>setWinOpened(true)}
+                onKeyDown={(e)=>handlerEnterKey(e)}/>
 
             <button className="search__clear" onClick={(e)=>handlerClearButton(e)}>+</button>
             
@@ -82,17 +97,23 @@ function Search(){
             <div className={`header__search-window hswindow ${winOpened ? "show" : "hide"}`} >
                 <div className="hswindow__body">
                     {
-                        query.length >= 2 
+                        query.trim().length >= 2 
                         ?   queryProducts.length > 0
                             ?   queryProducts.map(product => 
-                                    <Link to={`${product.category}/${product.id}`} 
-                                        className="hswindow__item hsitem" 
-                                        key={product.id}
-                                        onClick={(e)=>handlerProductclick(e)}>
-                                        <div className="hsitem__category">{product.category}</div>
-                                        <div className="hsitem__title">{product.name}</div>
-                                        <div className="hsitem__price">${product.price.toFixed(2)}</div>
-                                    </Link>
+                                    {
+
+                                        const substringStart = product.name.toLowerCase().indexOf(query.trim());
+                                        const substringEnd = product.name.toLowerCase().indexOf(query.trim()) + query.trim().length;
+
+                                        return (<Link to={`${product.category}/${product.id}`} 
+                                                    className="hswindow__item hsitem" 
+                                                    key={product.id}
+                                                    onClick={(e)=>handlerProductclick(e)}>
+                                                    <div className="hsitem__category">{product.category}</div>
+                                                    <div className="hsitem__title">{product.name.slice(0, substringStart)}<strong>{product.name.slice(substringStart, substringEnd)}</strong>{product.name.slice(substringEnd)}</div>
+                                                    <div className="hsitem__price">${product.price.toFixed(2)}</div>
+                                                </Link>)
+                                    }
                                 )
                             :   <div className="hswindow__hint">
                                     <div className="hswindow__icon"><i className="ic_shocked"></i></div>
