@@ -28,7 +28,6 @@ function SampleNextArrow(props) {
 }  
 
 export default function Slider() {
-    const slider = useRef();
     const images = useMemo(()=>[
         {
             name: "01.jpg",
@@ -52,7 +51,7 @@ export default function Slider() {
         },
         {
             name: "05.jpg",
-            title: "A series of new summer looks awaits you",
+            title: "A series of new summer looks await of you",
             btn: "Check out"
         },
         {
@@ -101,10 +100,18 @@ export default function Slider() {
                         style={{}}
                         onClick={() => {}}>
                         <i className="ic_angle-left"></i>
-                    </SamplePrevArrow>
+                    </SamplePrevArrow>,
+        responsive: [
+            {
+            breakpoint: 768,
+            settings: {
+                    arrows: false,
+                },
+            },
+        ],
     }), [])
     return (
-        <SlickSlider {...settings} className="main__slider slider" ref={slider}>
+        <SlickSlider {...settings} className="main__slider slider">
             {
                 images.map((img) => <Slide img={img}/>)
             } 

@@ -20,11 +20,13 @@ export default function CatProduct({product, addToCart}) {
                         "color": product.colors[0],
                         "count": 1
                     }
-                    setAdded(true);
-                    const timeout = setTimeout(() => {
-                        setAdded(false);
-                        clearTimeout(timeout);
-                    }, 1000)
+                    if(!added){
+                        setAdded(true);
+                        const timeout = setTimeout(() => {
+                            setAdded(false);
+                            clearTimeout(timeout);
+                        }, 1000)
+                    }
                     addToCart(newItem);
                     }}>
                 {

@@ -6,7 +6,8 @@ $green: #5ECE7B;
 .slick-prev,
 .slick-next
 {
-    
+    position: absolute;
+    cursor: pointer;
 }
 .slick-prev.slick-disabled:before,
 .slick-next.slick-disabled:before

@@ -1,23 +1,16 @@
+@charset 'UTF-8';
 $black: #1D1F22;
 $green: #5ECE7B;
-.main__slider {    
-    height: 80vh;
-    // overflow: hidden;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-}
 
-.slider__prevBtn{
-    left: 32px;
+
+.promo_slider__prevBtn{
+    left: -50px;    
 }
-.slider__nextBtn{
-    right: 32px;
+.promo_slider__nextBtn{
+    right: -50px;
 }
-.slider__prevBtn,
-.slider__nextBtn{
+.promo_slider__prevBtn,
+.promo_slider__nextBtn{
     position: absolute;
     z-index: 10;
     top: 50%;
@@ -25,15 +18,15 @@ $green: #5ECE7B;
     width: 40px;
     height: 40px;
     cursor: pointer;
-    color: $green;
-    border: 2px solid $green;
+    color: $black;
+    border: 2px solid $black;
     outline: none;
     background: transparent;
     border-radius: 50%;
     &:hover, 
     &:active{
-        border: 2px solid #fff;
-        color: #fff;
+        border: 2px solid $green;
+        color: $green;
         div{
             
         }
