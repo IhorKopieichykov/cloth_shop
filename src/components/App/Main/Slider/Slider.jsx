@@ -1,48 +1,88 @@
 import './Slider.scss';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import "./slick.scss"; 
+import "./slick-theme.scss";
 import SlickSlider from "react-slick";
 import { useMemo } from 'react';
 import { useRef } from 'react';
+import Slide from './Slide/Slide';
 
-function SampleNextArrow(props) {
-    const { className, style, onClick, children } = props;
-    return (
-        <div
-        className={className}
-        style={{ ...style, display: "block"}}
-        onClick={onClick}
-        >{children}</div>
-    );
-}
-  
 function SamplePrevArrow(props) {
     const { className, style, onClick, children} = props;
     return (
         <div
-        className={className}
+        className={`${className} slider__prevBtn`}
         style={{ ...style, display: "block"}}
         onClick={onClick}
-        >{children}</div>
+        ><div>{children}</div></div>
     );
 }
+function SampleNextArrow(props) {
+    const { className, style, onClick, children } = props;
+    return (
+        <div
+        className={`${className} slider__nextBtn`}
+        style={{ ...style, display: "block"}}
+        onClick={onClick}
+        ><div>{children}</div></div>
+    );
+}  
 
 export default function Slider() {
     const slider = useRef();
-    const imageNames = useMemo(()=>[
-        "01.jpg",
-        "02.jpg",
-        "03.jpg",
-        "04.jpg",
-        "05.jpg",
-        "06.jpg",
-        "07.jpg",
-        "08.jpg",
-        "09.jpg",
-        "10.jpg",        
+    const images = useMemo(()=>[
+        {
+            name: "01.jpg",
+            title: "Brand New Models",
+            btn: "See more"
+        },
+        {
+            name: "02.jpg",
+            title: "Your Best Accessories",
+            btn: "Check out"
+        },
+        {
+            name: "03.jpg",
+            title: "Fashionable Men's Suits",
+            btn: "Buy"
+        },
+        {
+            name: "04.jpg",
+            title: `Sport - is life! That's all for it`,
+            btn: "Get new one"
+        },
+        {
+            name: "05.jpg",
+            title: "A series of new summer looks awaits you",
+            btn: "Check out"
+        },
+        {
+            name: "06.jpg",
+            title: "Check out our new glasses collection",
+            btn: "Look through"
+        },
+        {
+            name: "07.jpg",
+            title: "Warm tracksuits - practicality and comfort",
+            btn: "Take a look"
+        },
+        {
+            name: "08.jpg",
+            title: "Summer shoes - I believe I can fly!",
+            btn: "View more"
+        },
+        {
+            name: "09.jpg",
+            title: "Women's outfits for you ladies",
+            btn: "Look over"
+        },
+        {
+            name: "10.jpg",
+            title: "Comfortable and practical shoes",
+            btn: "Get a better look"
+        },       
     ], [])
     const settings = useMemo(()=>({
-        dots: true,
+        dots: false,
         arrows: true,
         infinite: true,
         speed: 500,
@@ -51,25 +91,22 @@ export default function Slider() {
         initialSlide: 0,
         autoplay: true,
         autoplaySpeed: 3000,
-        pauseOnHover: false,
-        nextArrow: <SampleNextArrow className="slider__nextArrow"><i className="ic_angle-right"></i></SampleNextArrow>,
-        prevArrow: <SamplePrevArrow className="slider__prevArrow"><i className="ic_angle-left"></i></SamplePrevArrow>
+        pauseOnHover: true,
+        nextArrow:  <SampleNextArrow 
+                        style={{}}
+                        onClick={() => {}}>
+                        <i className="ic_angle-right"></i>
+                    </SampleNextArrow>,
+        prevArrow:  <SamplePrevArrow 
+                        style={{}}
+                        onClick={() => {}}>
+                        <i className="ic_angle-left"></i>
+                    </SamplePrevArrow>
     }), [])
     return (
         <SlickSlider {...settings} className="main__slider slider" ref={slider}>
             {
-                imageNames.map((img) => (
-                    <div className="slide" key={img}>
-                        <div className="slide__image">
-                            <img src={require(`../../../../images/main/home/slider/${img}`)} alt="slide_img" />
-                        </div>
-                        <div className="slide__content">
-                            <div className="slide__title">Title</div>
-                            <div className="slide__button">Check out</div>
-                        </div>
-                        
-                    </div>
-                ))
+                images.map((img) => <Slide img={img}/>)
             } 
         </SlickSlider>
     );
