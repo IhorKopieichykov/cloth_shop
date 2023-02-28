@@ -113,7 +113,7 @@ export default function Slider() {
     return (
         <SlickSlider {...settings} className="main__slider slider">
             {
-                images.map((img) => <Slide img={img}/>)
+                images.map((img) => <Slide img={img} key={img}/>)
             } 
         </SlickSlider>
     );

@@ -1,9 +1,13 @@
 import './Sort.scss';
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-export default function Sort({products, setGoods, field, order, setSearchParams}){
+export default function Sort({products, setProducts}){
     const [open, setOpen] = useState(false);    
     const sortRef = useRef();
+    const [searchParams, setSearchParams] = useSearchParams();    
+    const field = useMemo(() => searchParams.get('sortBy') || '', [searchParams]);
+    const order = useMemo(() => searchParams.get('order') || '', [searchParams]);
 
     useEffect(() => {
         const closeSelect = (e) => {
@@ -60,21 +64,24 @@ export default function Sort({products, setGoods, field, order, setSearchParams}
         const index = sortings.indexOf(sortings.find((sort)=>sort.field === field && sort.order === order)) || 0;
         setSelected(index);
         if (field && order) {
-            setGoods(sortGoods(field, order));        
+            setProducts(sortGoods(field, order));        
         } else {
-            setGoods(products);
+            setProducts(products);
         }
-        // setGoods(sortGoods(field, order));  
-    }, [field, order, products, setGoods, sortGoods, sortings]);
+        // setProducts(sortGoods(field, order));  
+    }, [field, order, products, setProducts, sortGoods, sortings]);
 
     const onSelect = useCallback((i) => {        
         setOpen(false);
         setSelected(i);
-        let params = { };
-        if (sortings[i].field) params.sortBy = sortings[i].field;
-        if (sortings[i].order) params.order = sortings[i].order;
-        setSearchParams(params);
-    }, [setSearchParams, setSelected, sortings])
+        if (sortings[i].field) {
+            searchParams.set("sortBy", sortings[i].field);
+        }
+        if (sortings[i].order) {
+            searchParams.set("order", sortings[i].order);
+        }
+        setSearchParams(searchParams);
+    }, [searchParams, setSearchParams, setSelected, sortings])
 
     return(
         <div className="sort" ref={sortRef}>

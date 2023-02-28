@@ -2,11 +2,11 @@ $black: #1D1F22;
 $green: #5ECE7B;
 $grey: #EEEEEE;
 
-.sort {
+.filter {
     position: relative;
     width: 180px;
 }
-.sort__title {
+.filter__title {
     text-transform: lowercase;
     font-size: 14px;
     font-weight: 600;
@@ -15,7 +15,7 @@ $grey: #EEEEEE;
         text-transform: uppercase;
     }
 }
-.sort__placeholder {    
+.filter__placeholder {
     display: flex;
     align-items: center;
     justify-content: space-between;    
@@ -41,7 +41,9 @@ $grey: #EEEEEE;
         transition: all .3s ease;
     }
 }
-.sort__values {
+.ic_angle-down {
+}
+.filter__values {
     position: absolute;
     // visibility: hidden;
     width: 100%;
@@ -54,7 +56,7 @@ $grey: #EEEEEE;
     visibility: hidden;
     opacity: 0;
     transform-origin: top center;
-    transform: scaleY(0);    
+    transform: scaleY(0);
     transition: all .3s ease;
     &.show{
         visibility: visible;
@@ -62,7 +64,7 @@ $grey: #EEEEEE;
         transform: scaleY(1); 
     }
 }
-.sort__value {
+.filter__value {
     text-transform: capitalize;
     user-select: none;
     cursor: pointer;

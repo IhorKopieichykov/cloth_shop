@@ -14,7 +14,7 @@ function HCartItem({currItem, index, onUpdate}){
             </div>
             <HItemCounter item={currItem} index={index} onUpdate={onUpdate}/>
             <div className="hcart__item_image" >
-                <img src={require(`../../../../../images/products/${currItem.category}/${currItem.id}/${currItem.images[currItem.colors.indexOf(currItem.color)]}`)} alt="item_img" />
+                <img src={require(`../../../../../images/products/${currItem.category}/${currItem.id}/${currItem?.images[currItem.colors.indexOf(currItem.color)]}`)} alt="item_img" />
             </div>
             <div className="hcart__item_delete" 
             onClick={() => {
