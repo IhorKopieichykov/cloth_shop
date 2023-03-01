@@ -6,11 +6,13 @@ export const ProductsContext = createContext({
     setProducts: () => {},
     isLoading: true,
     setIsLoading: () => {},
+    currency: "usd"
 })
 
 export const ProductsProvider = ({children}) => {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [currency, setCurrency] = useState("usd")
 
     useEffect(() => {
 		getProductsFromAPI().then(arr => {
@@ -28,8 +30,10 @@ export const ProductsProvider = ({children}) => {
             setProducts,
             isLoading,
             setIsLoading,
+            currency,
+            setCurrency
         }
-      ), [isLoading, products]);
+      ), [currency, isLoading, products]);
     return (
         <ProductsContext.Provider value={contextValue}>
             {children}

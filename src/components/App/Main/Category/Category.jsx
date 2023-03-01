@@ -16,12 +16,12 @@ function Category({title, category}){
         }
     }, [products, category, isLoading])
     
-    const [goods, setGoods] = useState(catProducts);     
+    const [goodsAfterSort, setGoodsAfterSort] = useState(catProducts);
+    const [goodsToDisplay, setGoodsToDisplay] = useState(catProducts);   
     // useEffect(()=>{
-    //     if (!isLoading) {
-    //         setGoods(catProducts);
-    //     }
-    // }, [catProducts, isLoading])
+    //     setGoodsAfterSort(catProducts);
+    //     setGoodsToDisplay(catProducts);
+    // }, [catProducts])      
     
     const goods_count_filter_values = [
         {
@@ -62,11 +62,11 @@ function Category({title, category}){
                         values={goods_count_filter_values} 
                         defValue={goods_count_filter_values.length-1} 
                         callback={setProductsPerPage}/>             
-                    <Sort products={catProducts} setProducts={setCatProducts}/>
+                    <Sort products={catProducts} setProducts={setGoodsAfterSort}/>
                 </div>
             </div>            
-            <CatProducts products={goods} isLoading={isLoading}/>
-            <Pagination length={catProducts.length} products={catProducts} setGoods={setGoods} productsPerPage={productsPerPage}/>
+            <CatProducts products={goodsToDisplay} isLoading={isLoading}/>
+            <Pagination length={catProducts.length} products={goodsAfterSort} setGoods={setGoodsToDisplay} productsPerPage={productsPerPage}/>
         </section>
     );
 }

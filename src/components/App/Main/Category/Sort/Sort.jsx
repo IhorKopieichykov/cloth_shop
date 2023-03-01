@@ -63,7 +63,7 @@ export default function Sort({products, setProducts}){
     useEffect(() => {
         const index = sortings.indexOf(sortings.find((sort)=>sort.field === field && sort.order === order)) || 0;
         setSelected(index);
-        if (field && order) {
+        if (field && order && index > 0) {
             setProducts(sortGoods(field, order));        
         } else {
             setProducts(products);
@@ -74,13 +74,15 @@ export default function Sort({products, setProducts}){
     const onSelect = useCallback((i) => {        
         setOpen(false);
         setSelected(i);
-        if (sortings[i].field) {
+        if (sortings[i].field && sortings[i].order) {
             searchParams.set("sortBy", sortings[i].field);
-        }
-        if (sortings[i].order) {
             searchParams.set("order", sortings[i].order);
+            setSearchParams(searchParams);
+        } else {
+            searchParams.delete("sortBy");
+            searchParams.delete("order");
+            setSearchParams(searchParams);
         }
-        setSearchParams(searchParams);
     }, [searchParams, setSearchParams, setSelected, sortings])
 
     return(

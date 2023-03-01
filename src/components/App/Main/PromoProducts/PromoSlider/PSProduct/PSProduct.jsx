@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { CartContext } from '../../../../../CartContext/CartContext';
 import { useContext } from 'react';
+import { ProductsContext } from '../../../../../ProductsContext/ProductsContext';
 
 export default function PSProduct({product}) {
     const [added, setAdded] = useState(false);
     const { cart, setItems } = useContext(CartContext);
+    const { currency, setCurrency } = useContext(ProductsContext);
 
     const updateItemCount = (searchItem, count) => {
 		const indexOfItem = cart.indexOf(searchItem);

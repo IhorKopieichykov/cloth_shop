@@ -42,6 +42,11 @@ export default function Pagination({length, products, setGoods, productsPerPage}
         }
     }, [countOfPages, products, productsPerPage, searchParams, setGoods, setSearchParams])
     const handlerPage = (i) => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
         if (i >= 0 && i < countOfPages) {            
             setSelected(i);
             searchParams.set("page", i+1);
