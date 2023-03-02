@@ -22,7 +22,7 @@ export default async function getCurrencyRatesFromApi() {
         "status": "from local json"
     }
     if (response.ok) { 
-        let json = await response.json();
+        let json = await response.json();        
         return json;
     }
     else {

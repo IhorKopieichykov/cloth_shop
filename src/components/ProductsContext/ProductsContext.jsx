@@ -25,12 +25,12 @@ export const ProductsProvider = ({children}) => {
 		getProductsFromAPI().then(arr => {
 			setProducts(arr);
             setIsLoading(false);
-            console.log("загрузили");
 		})
         getCurrencyRatesFromApi().then(obj => {
             if (obj.hasOwnProperty("rates")) {                
                 setRates(obj.rates);
             }
+            console.log(obj);
         })        
 	}, [])    
 
@@ -59,9 +59,7 @@ export const ProductsProvider = ({children}) => {
                 })
                 setProducts(newProducts);
                 setIsLoading(false);
-                console.log("загрузили");
-            })            
-            console.log("поменяли");
+            })
         }
     }, [rates, searchParams, setSearchParams])
 
@@ -69,7 +67,6 @@ export const ProductsProvider = ({children}) => {
         if (searchParams.has("currency")) {
             if (searchParams.get('currency') !== currency.toLowerCase()) {   
                 if (!isLoading) {
-                    console.log("первый раз поменяли");
                     changeCurrency(searchParams.get('currency'));                    
                 }                 
             }
