@@ -71,6 +71,7 @@ function HCartItem({currItem, index, onUpdate}){
                         <div className="hwcd__button" id='cancel' onClick={()=>setHwcdIsShown(false)}>No, cancel</div>
                         <div className="hwcd__button" id='remove'
                             onClick={() => {
+                                setHwcdIsShown(false);
                                 onUpdate(index, {...currItem, "count": 0});
                             }}>
                             Yes, remove it

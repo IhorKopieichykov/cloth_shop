@@ -65,6 +65,7 @@ export default function CartItem({item, index, onUpdate}) {
                         <div className="wcd__button" id='cancel' onClick={()=>setWcdIsShown(false)}>No, cancel</div>
                         <div className="wcd__button" id='remove'
                             onClick={() => {
+                                setWcdIsShown(false)
                                 onUpdate(index, {...item, "count": 0});
                             }}>
                             Yes, remove it
