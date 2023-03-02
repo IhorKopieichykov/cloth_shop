@@ -4,9 +4,6 @@ $grey: #EEEEEE;
 
 .pagination{
     padding: 10px;
-}
-.pagination,
-.pag__pages {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,51 +11,12 @@ $grey: #EEEEEE;
     gap: 30px;
     font-size: 18px;
     line-height: 40px;
-    text-align: center;
-    
-}
-.pag {
-}
-.pag__left,
-.pag__right,
-.pag__page {
-    width: 40px;
-    height: 40px;    
-    border: 1px solid $black;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all .2s ease;
-    &:hover{
-        color: $green;
-        background-color: #fff;
-        border: 1px solid $green;
-    }
-    &.selected{
-        color: #fff;
-        border: 1px solid $green;
-        background-color: $green;
-        cursor: default;
-        &:hover{
-            color: #fff;
-            border: 1px solid $green;
-            background-color: $green;
-        }
-    }
-    &:active{
-        color: #fff;
-        border: 1px solid $green;
-        background-color: $green;
-    }
-}
-.ic_angle-left {
+    text-align: center;    
 }
 .pag__pages {
-    gap: 10px;
-}
-.pag__page {
-    line-height: 200%;
-}
-.pag__right {
-}
-.ic_angle-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 10px; 
 }

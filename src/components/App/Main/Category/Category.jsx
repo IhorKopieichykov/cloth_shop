@@ -13,15 +13,12 @@ function Category({title, category}){
     useEffect(()=>{
         if (!isLoading) {
             setCatProducts(products.filter(item => item.category === category));
+            // setCatProducts(products);
         }
     }, [products, category, isLoading])
     
     const [goodsAfterSort, setGoodsAfterSort] = useState(catProducts);
-    const [goodsToDisplay, setGoodsToDisplay] = useState(catProducts);   
-    // useEffect(()=>{
-    //     setGoodsAfterSort(catProducts);
-    //     setGoodsToDisplay(catProducts);
-    // }, [catProducts])      
+    const [goodsToDisplay, setGoodsToDisplay] = useState(catProducts);         
     
     const goods_count_filter_values = [
         {

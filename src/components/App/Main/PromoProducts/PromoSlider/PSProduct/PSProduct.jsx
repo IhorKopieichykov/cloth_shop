@@ -6,6 +6,12 @@ import { CartContext } from '../../../../../CartContext/CartContext';
 import { useContext } from 'react';
 import { ProductsContext } from '../../../../../ProductsContext/ProductsContext';
 
+const symbols = {
+    "usd": <>&#36;</>,
+    "uah": <>&#8372;</>,
+    "eur": <>&#8364;</>,
+}
+
 export default function PSProduct({product}) {
     const [added, setAdded] = useState(false);
     const { cart, setItems } = useContext(CartContext);
@@ -58,7 +64,9 @@ export default function PSProduct({product}) {
                 }
             </div>
             <h3 className="promo_product__title">{product.name}</h3>
-            <div className="promo_product__price">${product.price.toFixed(2)}</div>                               
+            <div className="promo_product__price">
+                ${product.price.toFixed(2)}
+            </div>                               
         </Link>
     )
 }

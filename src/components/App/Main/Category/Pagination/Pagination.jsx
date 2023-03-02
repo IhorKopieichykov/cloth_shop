@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import PageNumber from './PageNumber/PageNumber';
 import './Pagination.scss';
 
 export default function Pagination({length, products, setGoods, productsPerPage}) {
@@ -41,6 +42,8 @@ export default function Pagination({length, products, setGoods, productsPerPage}
             setSearchParams(searchParams);
         }
     }, [countOfPages, products, productsPerPage, searchParams, setGoods, setSearchParams])
+
+
     const handlerPage = (i) => {
         window.scrollTo({
             top: 0,
@@ -66,13 +69,25 @@ export default function Pagination({length, products, setGoods, productsPerPage}
                             </div>
                             <div className="pag__pages">
                                 {
-                                    pageNumbers.map((number, index)=>(
-                                        <div className={`pag__page ${selected === index ? "selected" : ''}`}
-                                            key={number}
-                                            onClick={()=>handlerPage(index)}>
-                                            {number}
-                                        </div>
-                                    ))
+                                    pageNumbers.map((number, index)=>{
+                                            if ((index>=selected-1 && index <= selected+1) 
+                                            || (selected === 0 && index <=selected+2) 
+                                            || (selected === pageNumbers.length-1 && index >=selected-2)
+                                            || (index === 0)
+                                            || (index === pageNumbers.length-1)) {
+                                                return(
+                                                    <PageNumber 
+                                                        key={index}
+                                                        countOfPages={countOfPages} 
+                                                        index={index} 
+                                                        selected={selected} 
+                                                        pageNumbers={pageNumbers} 
+                                                        number={number} 
+                                                        handlerPage={handlerPage}/>
+                                                );
+                                            } 
+                                            return <></>;                                         
+                                        })
                                 }
                             </div>
                             <div className="pag__right"

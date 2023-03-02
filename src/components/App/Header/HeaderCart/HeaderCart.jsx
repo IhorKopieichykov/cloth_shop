@@ -2,14 +2,22 @@ import { useState, useEffect, useRef, useContext, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 // import useLocalStorage from '../../../../helpers/useLocalStorage';
 import { CartContext } from '../../../CartContext/CartContext';
+import { ProductsContext } from '../../../ProductsContext/ProductsContext';
 import HCartItem from './HCartItem/HCartItem';
 import './HeaderCart.scss';
 
+const symbols = {
+    "usd": <>&#36;</>,
+    "uah": <>&#8372;</>,
+    "eur": <>&#8364;</>,
+}
+
 function HeaderCart(){
-    let [cartIsShown, setCartIsShown] = useState(false);   
+    const { rates, currency } = useContext(ProductsContext);
+    const [cartIsShown, setCartIsShown] = useState(false);   
     const cartRef = useRef();
     function toggleCart(){
-        setCartIsShown(cartIsShown = !cartIsShown);
+        setCartIsShown(!cartIsShown);
     }
     useEffect(() => {        
         const handler = (e) => {
@@ -27,8 +35,8 @@ function HeaderCart(){
         return cart.reduce((acc, item) => (acc += item.count), 0);
     }, [cart]);
     const getTotalPrice = useCallback(()=>{
-        return cart.reduce((prev, curr) => prev + curr.price*curr.count, 0).toFixed(2)
-    }, [cart]);
+        return (cart.reduce((prev, curr) => prev + curr.price*curr.count, 0)*rates[currency.toUpperCase()]).toFixed(2)
+    }, [cart, currency, rates]);
 
     const updateCartItem = (indexOfItem, newItem) => {
 		if (newItem.count <= 0) {
@@ -64,10 +72,19 @@ function HeaderCart(){
                 
                 <div className="header__cart-total">
                     <div className="header__cart_total-title">Total</div>
-                    <div className="header__cart_total-value">$
+                    <div className="header__cart_total-value">
                         {
-                            getTotalPrice()
+                            symbols[currency.toLowerCase()] && currency !== 'uah'
+                            ? symbols[currency.toLowerCase()] 
+                            : ''
                         }
+                        {getTotalPrice()}
+                        {   
+                            currency.toLowerCase() === 'uah'
+                                ?   ' hrn'
+                                :   ''
+                        }
+                        
                     </div>                            
                 </div>
                 <div className="header__cart-buttons">

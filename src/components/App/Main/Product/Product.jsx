@@ -1,11 +1,19 @@
 import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { CartContext } from '../../../CartContext/CartContext';
+import { ProductsContext } from '../../../ProductsContext/ProductsContext';
 import './Product.scss';
 import ProductOption from './ProductOption/ProductOption';
+
+const symbols = {
+    "usd": <>&#36;</>,
+    "uah": <>&#8372;</>,
+    "eur": <>&#8364;</>,
+}
 
 
 export default function Product({product, isLoading}) {
     const {cart, setItems} = useContext(CartContext);
+    const {rates, currency} = useContext(ProductsContext);
     const [imageIndex, setImageIndex] = useState(0);
     const [size, setSize] = useState('');
     const [color, setColor] = useState('');
@@ -61,9 +69,10 @@ export default function Product({product, isLoading}) {
 		if (searchItem) {
 			updateItemCount(searchItem, 1);			
 		} else{
+            newItem.price = newItem.price/rates[currency.toUpperCase()];
 			setItems([...cart, newItem]);
 		}
-    }, [cart, product, setItems, updateItemCount])
+    }, [cart, currency, product, rates, setItems, updateItemCount])
     const [added, setAdded] = useState(false);
 
 
@@ -98,7 +107,18 @@ export default function Product({product, isLoading}) {
                         </div>
                         <div className="product__price">
                             <div className="product__price_title">Price:</div>
-                            <div className="product__price_value">${product.price.toFixed(2)}</div>
+                            <div className="product__price_value">
+                                {
+                                    symbols[currency.toLowerCase()] && currency !== 'uah'
+                                    ? symbols[currency.toLowerCase()] 
+                                    : ''}
+                                {product.price.toFixed(2)} 
+                                {   
+                                    currency.toLowerCase() === 'uah'
+                                        ?   ' hrn'
+                                        :   ''
+                                }
+                            </div>
                         </div>
                         <div className="product__addtocart">
                             <button 

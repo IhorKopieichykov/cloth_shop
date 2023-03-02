@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './CatProduct.scss';
 import { Link } from 'react-router-dom';
+import { ProductsContext } from '../../../../../ProductsContext/ProductsContext';
 
+const symbols = {
+    "usd": <>&#36;</>,
+    "uah": <>&#8372;</>,
+    "eur": <>&#8364;</>,
+}
 
 export default function CatProduct({product, addToCart}) {
     const [added, setAdded] = useState(false);
+    const {currency} = useContext(ProductsContext);
 
     return (
         <Link to={`${product.id}`} className="cat__product" key={product.id}>
@@ -36,7 +43,19 @@ export default function CatProduct({product, addToCart}) {
                 }
             </div>
             <div className="cat__product_title">{product.name}</div>
-            <div className="cat__product_price">${product.price.toFixed(2)}</div>
+            <div className="cat__product_price">
+                {
+                    symbols[currency.toLowerCase()] && currency !== 'uah'
+                    ? symbols[currency.toLowerCase()] 
+                    : ''
+                }
+                {product.price.toFixed(2)} 
+                {   
+                    currency.toLowerCase() === 'uah'
+                        ?   ' hrn'
+                        :   ''
+                }
+            </div>
             
         </Link>
     )

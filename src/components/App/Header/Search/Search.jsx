@@ -3,8 +3,14 @@ import { createSearchParams, Link, useNavigate, useSearchParams } from 'react-ro
 import { ProductsContext } from '../../../ProductsContext/ProductsContext';
 import './Search.scss';
 
+const symbols = {
+    "usd": <>&#36;</>,
+    "uah": <>&#8372;</>,
+    "eur": <>&#8364;</>,
+}
+
 function Search(){
-    const { products, isLoading } = useContext(ProductsContext);
+    const { products, isLoading, currency } = useContext(ProductsContext);
 
     const [query, setQuery] = useState('');
     const inputRef = useRef();
@@ -111,7 +117,18 @@ function Search(){
                                                     onClick={(e)=>handlerProductclick(e)}>
                                                     <div className="hsitem__category">{product.category}</div>
                                                     <div className="hsitem__title">{product.name.slice(0, substringStart)}<strong>{product.name.slice(substringStart, substringEnd)}</strong>{product.name.slice(substringEnd)}</div>
-                                                    <div className="hsitem__price">${product.price.toFixed(2)}</div>
+                                                    <div className="hsitem__price">
+                                                        {
+                                                            symbols[currency.toLowerCase()] && currency !== 'uah'
+                                                            ? symbols[currency.toLowerCase()] 
+                                                            : ''}
+                                                        {product.price.toFixed(2)} 
+                                                        {   
+                                                            currency.toLowerCase() === 'uah'
+                                                                ?   ' hrn'
+                                                                :   ''
+                                                        }
+                                                    </div>
                                                 </Link>)
                                     }
                                 )

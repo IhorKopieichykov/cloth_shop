@@ -4,9 +4,11 @@ import { CartContext } from "../../../../CartContext/CartContext";
 import CatProduct from "./CatProduct/CatProduct";
 import CatProductSkeleton from "./CatProductSkeleton/CatProductSkeleton";
 import "./CatProducts.scss";
+import { ProductsContext } from "../../../../ProductsContext/ProductsContext";
 
 function CatProducts({products, isLoading}){
     const { cart, setItems } = useContext(CartContext);
+	const { rates, currency } = useContext(ProductsContext);
 
     const updateItemCount = (searchItem, count) => {
 		const indexOfItem = cart.indexOf(searchItem);
@@ -22,6 +24,7 @@ function CatProducts({products, isLoading}){
 		if (searchItem) {
 			updateItemCount(searchItem, 1);			
 		} else{
+			item.price = item.price/rates[currency.toUpperCase()];
 			setItems([...cart, item]);
 		}		
 	}

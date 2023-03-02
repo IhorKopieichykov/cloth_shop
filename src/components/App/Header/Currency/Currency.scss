@@ -5,12 +5,20 @@ $grey: #EEEEEE;
 /*---- CURRENCY ----*/
 .header__option-currency{  
     position: relative;
+    user-select: none;
     &:hover{
         cursor: pointer;
         [class*="header__list-"] {
             pointer-events: all;
             opacity: 1;
             transform: scaleY(1);
+        }
+        .header__button-currency.expand{
+            color: $green;
+            .ic_angle-down{
+                transform: translate(0%, -50%) rotate(-180deg);
+                transition: all .2s ease;
+            }
         }
     } 
 }
@@ -23,11 +31,15 @@ $grey: #EEEEEE;
 }
 .header__button-currency.expand{
     margin-right: 15px;
+    width: 20px;
+    line-height: 1.6;
+    float: left;
     .ic_angle-down{
         font-size: 14px;
         position: absolute;
-        right: -15px;
-        top: 20%;
+        right: -12px;
+        top: 50%;
+        transform: translate(0%, -50%);
         transition: all .2s ease;
     }
 }
@@ -65,6 +77,9 @@ $grey: #EEEEEE;
             pointer-events: all;
             background-color: $grey;
             // box-shadow: inset -2px -2px 5px white, inset 2px 2px 5px black;
+        }
+        &.selected {
+            background-color: $grey;
         }
     }
     ul li span{

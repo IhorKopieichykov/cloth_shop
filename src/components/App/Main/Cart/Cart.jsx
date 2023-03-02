@@ -4,8 +4,16 @@ import { useContext } from 'react';
 import { CartContext } from '../../../CartContext/CartContext';
 import CartItem from './CartItem/CartItem';
 import { Link } from 'react-router-dom';
+import { ProductsContext } from '../../../ProductsContext/ProductsContext';
+
+const symbols = {
+    "usd": <>&#36;</>,
+    "uah": <>&#8372;</>,
+    "eur": <>&#8364;</>,
+}
 
 export default function Cart() {
+    const { rates, currency } = useContext(ProductsContext);
     const {cart, setItems} = useContext(CartContext);
     
     const getItemsCount = useCallback(() => {
@@ -21,8 +29,8 @@ export default function Cart() {
 	}
 
     const getTotalPrice = useCallback(()=>{
-        return cart.reduce((prev, curr) => prev + curr.price*curr.count, 0).toFixed(2)
-    }, [cart]);
+        return (cart.reduce((prev, curr) => prev + curr.price*curr.count, 0)*rates[currency.toUpperCase()]).toFixed(2)
+    }, [cart, currency, rates]);
 
     const getTax = useCallback(()=>{
         const tax = 0.21;
@@ -49,20 +57,38 @@ export default function Cart() {
             
             <div className="cart__summary">
                 <div className="cart__tax_title">Tax 21%:</div>
-                <div className="cart__tax_value">$
+                <div className="cart__tax_value">
+                    {
+                        symbols[currency.toLowerCase()] && currency !== 'uah'
+                        ? symbols[currency.toLowerCase()] 
+                        : ''
+                    }
                     {
                         getTax()
+                    }
+                    {   
+                        currency.toLowerCase() === 'uah'
+                            ?   ' hrn'
+                            :   ''
                     }
                 </div>
                 <div className="cart__quantity_title">Quantity:</div>
                 <div className="cart__quantity_value">{getItemsCount()}</div>
                 <div className="cart__total_title">Total:</div>
-                <div className="cart__total_value">$
+                <div className="cart__total_value">
                     {
-                        getTotalPrice()
+                        symbols[currency.toLowerCase()] && currency !== 'uah'
+                        ? symbols[currency.toLowerCase()] 
+                        : ''
+                    }
+                    {getTotalPrice()}
+                    {   
+                        currency.toLowerCase() === 'uah'
+                            ?   ' hrn'
+                            :   ''
                     }
                 </div>
-                <Link className={`cart__order_button ${!cart.length ? "disabled" : ''}`} >order</Link>
+                <Link className={`cart__order_button ${!cart.length ? "disabled" : ''}`}>order</Link>
             </div>
         </div>
     )
