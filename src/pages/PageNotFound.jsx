@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import Cart from '../components/App/Main/Cart/Cart';
+import React, { useEffect } from "react";
 import Main from '../components/App/Main/Main';
+import NotFound from "../components/App/Main/NotFound/NotFound";
 
-export default function CartPage() {
+export default function PageNotFound() {
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -10,9 +10,10 @@ export default function CartPage() {
             behavior: 'smooth'
         })
     }, [])
-    return (
+    
+	return (
         <Main>
-            <Cart/>
+            <NotFound/>
         </Main>
-    )
+    );
 }

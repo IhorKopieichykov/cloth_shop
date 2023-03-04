@@ -5,6 +5,13 @@ import Product from '../components/App/Main/Product/Product';
 import { ProductsContext } from '../components/ProductsContext/ProductsContext';
 
 export default function ProductPage() {
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
+    }, [])
     const { products, isLoading } = useContext(ProductsContext);
     const { productId } = useParams();
     const [product, setProduct] = useState(products.find(product => product.id === productId));

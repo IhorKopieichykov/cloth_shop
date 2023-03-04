@@ -11,6 +11,7 @@ import Kids from '../../pages/Kids';
 import ProductPage from '../../pages/ProductPage';
 import CartPage from '../../pages/CartPage';
 import SearchPage from '../../pages/SearchPage';
+import PageNotFound from '../../pages/PageNotFound';
 
 export default function App () {	
 	return (
@@ -25,6 +26,7 @@ export default function App () {
 						<Route path=':category/:productId' element={<ProductPage />}/>
 						<Route path='cart' element={<CartPage />}/>
 						<Route path='search' element={<SearchPage />}/>
+						<Route path='*' element={<PageNotFound />}/>
 					</Route>
 				</Routes>
 			</CartProvider>
