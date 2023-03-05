@@ -1,0 +1,45 @@
+$black: #1D1F22;
+$green: #5ECE7B;
+
+.header__user {  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0px 20px;
+    width: fit-content;
+    flex: 1 1 auto;
+    transition: all .1s ease;
+    &:hover{
+        cursor: pointer;
+        color: $green;
+        .huser__login{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+.huser {
+}
+.huser__icon {
+
+}
+.ic_user {
+}
+.huser__login {
+    position: absolute;
+    top: 100%;
+    font-size: 16px;
+    color: $green;
+    line-height: 1.6;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .1s ease;
+    .ic_enter{
+        font-size: 20px;
+    }
+}
+.ic_enter {
+}

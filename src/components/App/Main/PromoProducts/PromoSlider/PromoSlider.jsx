@@ -54,10 +54,24 @@ export default function PromoSlider({products}) {
                     </SamplePrevArrow>,
         responsive: [
             {
-            breakpoint: 768,
-            settings: {
-                    arrows: false,
-                },
+                breakpoint: 1300,
+                settings: {
+                        arrows: false,
+                    },
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                        arrows: false,
+                        slidesToShow: 3,
+                    },
+            },
+            {
+                breakpoint: 568,
+                settings: {
+                        arrows: false,
+                        slidesToShow: 2,
+                    },
             },
         ],
     }), [])

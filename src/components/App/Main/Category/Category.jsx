@@ -12,8 +12,8 @@ function Category({title, category}){
     const [catProducts, setCatProducts] = useState(products.filter(item => item.category === category));
     useEffect(()=>{
         if (!isLoading) {
-            setCatProducts(products.filter(item => item.category === category));
-            // setCatProducts(products);
+            // setCatProducts(products.filter(item => item.category === category));
+            setCatProducts(products);
         }
     }, [products, category, isLoading])
     
@@ -49,11 +49,11 @@ function Category({title, category}){
     return (
         <section className="main__category cat">
             <div className="cat__header">
-                <h2 className="cat__title">{title}</h2>                
-                <div className="cat__filters filters">
-                    <div className="filter__count">
+                <h2 className="cat__title">{title}</h2>    
+                <div className="cat__count">
                         {catProducts.length === 1 ? (catProducts.length + " item") : (catProducts.length + " items")}
-                    </div>
+                </div>          
+                <div className="cat__filters filters">                    
                     <Filter type={"ppp"} 
                         title={"Products per page"}
                         values={goods_count_filter_values} 
@@ -63,7 +63,7 @@ function Category({title, category}){
                 </div>
             </div>            
             <CatProducts products={goodsToDisplay} isLoading={isLoading}/>
-            <Pagination length={catProducts.length} products={goodsAfterSort} setGoods={setGoodsToDisplay} productsPerPage={productsPerPage}/>
+            <Pagination length={catProducts.length} products={goodsAfterSort} isLoading={isLoading} setGoods={setGoodsToDisplay} productsPerPage={productsPerPage}/>
         </section>
     );
 }

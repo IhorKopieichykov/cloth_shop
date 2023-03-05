@@ -1,26 +1,21 @@
 import React from 'react';
 import './PageNumber.scss';
 
-export default function PageNumber({countOfPages, index, selected, pageNumbers, number, handlerPage}) {
+export default function PageNumber({index, selected, pageNumbers, number, handlerPage}) {
     return (
         <>
             {
-                (((selected !== pageNumbers.length-1 && selected >= 3 && index === selected-1) 
-                || (selected === pageNumbers.length-1 && index ===selected-2)) && countOfPages > 4)
-                ?   <div>...</div>
-                :   ''
+                index === pageNumbers.length-1 && selected < pageNumbers.length - 3 && (<div>...</div>)
             }
             <div className={`pag__page ${selected === index ? "selected" : ''}`}
                 key={number}
                 onClick={()=>handlerPage(index)}>
                 {number}
-            </div>            
+            </div>  
             {
-                (((selected !== 0 && selected <= pageNumbers.length-4 && index === selected+1) 
-                || (selected === 0 && index === selected+2)) && countOfPages > 4)
-                ?   <div>...</div>
-                :   ''
-            }            
+                index === 0 && selected > 2 && (<div>...</div>)
+            }          
+            
         </>
     )
 }

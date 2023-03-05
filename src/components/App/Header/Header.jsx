@@ -6,6 +6,8 @@ import Currency from './Currency/Currency';
 import Language from './Language/Language';
 import Search from './Search/Search';
 import { Link } from 'react-router-dom';
+import HeaderUser from './HeaderUser/HeaderUser';
+import BurgerMenu from './BurgerMenu/BurgerMenu';
 
 function Header() {
     const menuItems = [
@@ -30,17 +32,21 @@ function Header() {
     return (
         <header className='header'>
             <div className="header__container">
-                <Link to="/" className='header__logo'>
+                <Link to="/" className='header__logo left'>
                     <img src={logo} alt="logo" />
                 </Link>
-                <Nav menuItems={menuItems} active="home"/>
+                <BurgerMenu menuItems={menuItems}/>
+                <Nav menuItems={menuItems}/>
                 <div className='header__center'></div>
                 <Search />
                 <div className='header__options'>
-                    <HeaderCart />
                     <Currency />
-                    <Language /> 
+                    <HeaderCart />
+                    <HeaderUser />
                 </div>
+                <Link to="/" className='header__logo right'>
+                    <img src={logo} alt="logo" />
+                </Link>
             </div>        
         </header>
     );

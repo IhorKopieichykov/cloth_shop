@@ -89,6 +89,7 @@ export default function Slider() {
         slidesToScroll: 1,
         initialSlide: 0,
         autoplay: true,
+        lazyLoad: true,
         autoplaySpeed: 3000,
         pauseOnHover: true,
         nextArrow:  <SampleNextArrow 

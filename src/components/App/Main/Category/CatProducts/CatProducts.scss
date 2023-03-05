@@ -11,3 +11,22 @@ $grey: #EEEEEE;
     justify-content: flex-start;
     row-gap: 30px;
 }
+@media (max-width: 992px) {
+    .cat__products {
+        padding: 10px 0px;
+        row-gap: 15px;
+    }
+}
+@media (max-width: 768px) {
+    .cat__products {
+        padding: 10px 0px;
+        row-gap: 5px;
+    }
+}
+@media (max-width: 475px) {
+    .cat__products {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}

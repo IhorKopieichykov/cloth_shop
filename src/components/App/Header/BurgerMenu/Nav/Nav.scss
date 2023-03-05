@@ -1,44 +1,46 @@
 $black: #1D1F22;
 $green: #5ECE7B;
-$grey: #EEEEEE;
+$grey: #afafaf;
 
-/*---- NAV ----*/
-.header__nav {
-    flex: 0 0 auto;
-    margin-left: 50px;
-}
-@media (max-width: 1200px) {
-    .header__nav {
-        margin-left: 10px;
+.hmenu__nav {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+    padding: 20px 10px 0px;
+    margin-bottom: 30px;
+    border-top: 1px solid $grey;
+    &::before{
+        content: "Pages";
+        position: absolute;
+        top: 0;
+        left: 5%;
+        font-size: 16px;
+        font-weight: 600;
+        transform: translate(0px, -70%);
+        color: $grey;
+        background-color: #fff;
     }
 }
-
-.nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 100%;
-    gap: 16px;
-}
-@media (max-width: 900px) {
-    .nav {
+@media (min-width: 900px) {
+    .hmenu__nav {
         display: none;
     }
 }
-.nav__item {    
-    height: 100%;  
-    display: flex;
-    align-items: flex-end;
-    padding: 30px 12px;
+.menu__nav_item {
+    width: 100%;  
+    padding: 10px;
     text-transform: uppercase;
     color: $black;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 120%;
-    border-bottom: 2px solid transparent;
+    border-left: 2px solid transparent;
     &:first-child{
         margin-left: 0px;
     }
@@ -47,7 +49,7 @@ $grey: #EEEEEE;
     }
     &:hover{
         cursor: pointer;
-        border-bottom: 2px solid $black;        
+        border-left: 2px solid $black;        
     }
     &:active{
         cursor: pointer;
@@ -56,7 +58,7 @@ $grey: #EEEEEE;
             -ms-user-select: none;
                 user-select: none;
         color: $green;
-        border-bottom: 2px solid $green;        
+        border-left: 2px solid $green;        
     }
     &.active{
         -webkit-user-select: none;
@@ -65,7 +67,6 @@ $grey: #EEEEEE;
                 user-select: none;
         pointer-events: none;
         color: $green;
-        border-bottom: 2px solid $green;   
+        border-left: 2px solid $green;   
     }
 }
-

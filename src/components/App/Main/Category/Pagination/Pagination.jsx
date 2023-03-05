@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import PageNumber from './PageNumber/PageNumber';
 import './Pagination.scss';
 
-export default function Pagination({length, products, setGoods, productsPerPage}) {
+export default function Pagination({length, products, isLoading, setGoods, productsPerPage}) {
     const [countOfPages, setCountOfPages] = useState(Math.ceil(length/productsPerPage));
     useEffect(()=>{
         setCountOfPages(Math.ceil(length/productsPerPage));
@@ -26,22 +26,27 @@ export default function Pagination({length, products, setGoods, productsPerPage}
     useEffect(()=>{
         if (searchParams.has("page")) {
             const page = searchParams.get("page");
-            if (page > countOfPages) {
+            if (countOfPages) {
+                if (page > countOfPages) {
+                    console.log(countOfPages);
+                    setGoods(sliceProducts(products, 0, productsPerPage));
+                    setSelected(0);
+                    searchParams.set("page", 1);
+                    setSearchParams(searchParams);
+                } else {
+                    setGoods(sliceProducts(products, page-1, productsPerPage));
+                    setSelected(page-1);
+                }                
+            }
+        } else {      
+            if (countOfPages) {
                 setGoods(sliceProducts(products, 0, productsPerPage));
                 setSelected(0);
                 searchParams.set("page", 1);
-                setSearchParams(searchParams);
-            } else {
-                setGoods(sliceProducts(products, page-1, productsPerPage));
-                setSelected(page-1);
-            }
-        } else {            
-            setGoods(sliceProducts(products, 0, productsPerPage));
-            setSelected(0);
-            searchParams.set("page", 1);
-            setSearchParams(searchParams);
+                setSearchParams(searchParams);                
+            }      
         }
-    }, [countOfPages, products, productsPerPage, searchParams, setGoods, setSearchParams])
+    }, [countOfPages, isLoading, products, productsPerPage, searchParams, setGoods, setSearchParams])
 
 
     const handlerPage = (i) => {
@@ -69,25 +74,54 @@ export default function Pagination({length, products, setGoods, productsPerPage}
                             </div>
                             <div className="pag__pages">
                                 {
-                                    pageNumbers.map((number, index)=>{
-                                            if ((index>=selected-1 && index <= selected+1) 
-                                            || (selected === 0 && index <=selected+2) 
-                                            || (selected === pageNumbers.length-1 && index >=selected-2)
-                                            || (index === 0)
-                                            || (index === pageNumbers.length-1)) {
-                                                return(
+                                    pageNumbers.map((number, index)=>{                                        
+                                        if (index>=selected-1 && index <= selected+1) {    // three numbers are always displayed
+                                            return (
+                                                <PageNumber 
+                                                    key={index} 
+                                                    index={index} 
+                                                    selected={selected} 
+                                                    pageNumbers={pageNumbers} 
+                                                    number={number} 
+                                                    handlerPage={handlerPage}/>
+                                            )
+                                        }
+                                        if (selected === 0 || selected === pageNumbers.length-1) {   // three numbers are always displayed, even if it`s start or end position
+                                            if (index>=selected-2 && index <= selected+2) {
+                                                return (
                                                     <PageNumber 
-                                                        key={index}
-                                                        countOfPages={countOfPages} 
+                                                        key={index} 
                                                         index={index} 
                                                         selected={selected} 
                                                         pageNumbers={pageNumbers} 
                                                         number={number} 
                                                         handlerPage={handlerPage}/>
-                                                );
-                                            } 
-                                            return <></>;                                         
-                                        })
+                                                )
+                                            }
+                                        }
+                                        if (index === 0 && selected >= 2) {  // first page are always displayed if selected page index is equal or more than 3
+                                            return (
+                                                <PageNumber 
+                                                    key={index} 
+                                                    index={index} 
+                                                    selected={selected} 
+                                                    pageNumbers={pageNumbers} 
+                                                    number={number} 
+                                                    handlerPage={handlerPage}/>
+                                            )
+                                        }
+                                        if (index === pageNumbers.length-1 && selected <= pageNumbers.length-3) {  // last page are always displayed if selected page index is equal or less than 3
+                                            return (
+                                                <PageNumber 
+                                                    key={index} 
+                                                    index={index} 
+                                                    selected={selected} 
+                                                    pageNumbers={pageNumbers} 
+                                                    number={number} 
+                                                    handlerPage={handlerPage}/>
+                                            )
+                                        }                                  
+                                    })
                                 }
                             </div>
                             <div className="pag__right"

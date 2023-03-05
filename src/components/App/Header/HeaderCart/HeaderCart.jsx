@@ -47,32 +47,32 @@ function HeaderCart(){
 	}
 
     return (  
-        <div className="header__option-cart" ref={cartRef}>
-            <div className={`header__button-cart${cartIsShown ? " active" : ''}`} onClick={toggleCart}>
+        <div className="header__cart hcart" ref={cartRef}>
+            <div className={`hcart_button${cartIsShown ? " active" : ''}`} onClick={toggleCart}>
                 <i className='ic_empty_cart'></i>
-                {cart.length ? <div className="header__cart_counter"><p>{getItemsCount()}</p></div> : ""}
+                {cart.length ? <div className="hcart_counter"><p>{getItemsCount()}</p></div> : ""}
             </div>  
-            {/* <div className={`header__cart_bg ${cartIsShown ? "show" : ""}`} onClick={toggleCart}></div> */}
-            <div className={`header__cart_window hcart ${cartIsShown ? "show" : "hide"}`}>
-                <div className="hcart__title"><b>My bag</b><div><b>, </b> 
+            <div className={`hcart_bg ${cartIsShown ? "show" : ""}`} onClick={toggleCart}></div>
+            <div className={`hcart_window hcart_w ${cartIsShown ? "show" : "hide"}`}>
+                <div className="hcart_w__title"><b>My bag</b><div><b>, </b> 
                     {getItemsCount()} {cart.length === 1 ? "item" : "items"}
                     </div>
                 </div>
                 {cart.length 
-                    ?   <div className="hcart__items">
+                    ?   <div className="hcart_w__items">
                             {cart.map((item, index) => 
-                                <HCartItem currItem={item} key={index} index={index} onUpdate={updateCartItem}/> 
+                                <HCartItem currItem={item} key={item.id} index={index} onUpdate={updateCartItem}/> 
                             )}                                               
                         </div>
-                    :   <div className='hcart__empty'>
+                    :   <div className='hcart_w__empty'>
                             <i className='ic_empty_cart'></i> <br/>
                             <div>Cart is empty</div>
                         </div>
                 }
                 
-                <div className="header__cart-total">
-                    <div className="header__cart_total-title">Total</div>
-                    <div className="header__cart_total-value">
+                <div className="hcart_w-total">
+                    <div className="hcart_w_total-title">Total</div>
+                    <div className="hcart_w_total-value">
                         {
                             symbols[currency.toLowerCase()] && currency !== 'uah'
                             ? symbols[currency.toLowerCase()] 
@@ -87,9 +87,9 @@ function HeaderCart(){
                         
                     </div>                            
                 </div>
-                <div className="header__cart-buttons">
-                    <Link to={'cart'} className="header__cart-button" id='view' onClick={()=>setCartIsShown(false)}>view bag</Link>
-                    <button className="header__cart-button" id="check" onClick={()=>setCartIsShown(false)}>check out</button>
+                <div className="hcart_w-buttons">
+                    <Link to={'cart'} className="hcart_w-button" id='view' onClick={()=>setCartIsShown(false)}>view bag</Link>
+                    <button className="hcart_w-button" id="check" onClick={()=>setCartIsShown(false)}>check out</button>
                 </div>
             </div>
         </div>       

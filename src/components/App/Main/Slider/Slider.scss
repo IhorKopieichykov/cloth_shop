@@ -9,7 +9,30 @@ $green: #5ECE7B;
     align-items: center;
     position: relative;
 }
-
+@media screen and (max-width: 1200px) {
+    .main__slider {    
+        height: 70vh;
+        margin-bottom: 40px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .main__slider {    
+        height: 60vh;
+        margin-bottom: 30px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .main__slider {    
+        height: 50vh;
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 568px) {
+    .main__slider {    
+        height: 30vh;
+        margin-bottom: 15px;
+    }
+}
 .slider__prevBtn{
     left: 32px;
 }

@@ -3,58 +3,63 @@ $green: #5ECE7B;
 $grey: #EEEEEE;
 
 /*---- CURRENCY ----*/
-.header__currency{  
+.hmenu__currency_select{  
     position: relative;
-    user-select: none;
+    user-select: none;    
     &:hover{
-        cursor: pointer;
-        .header__currency_list {
-            pointer-events: all;
-            opacity: 1;
-            transform: scaleY(1);
-        }
-        .header__currency_button.expand{
-            color: $green;
-            .ic_angle-down{
-                transform: translate(0%, -50%) rotate(-180deg);
-                transition: all .2s ease;
-            }
-        }
+        cursor: pointer;     
     } 
 }
-.header__currency_button {
+.hmenu__currency_button {
     position: relative;
+    line-height: 1.6;
+    font-size: 22px;  
+    border: 1px solid $black;
+    border-radius: 10px;
+    padding: 0px 20px 0px 10px;
+    min-width: 60px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), inset -2px -2px 3px rgba(0, 0, 0, 0.3);
+    transition: all .2s ease;
     &:hover{
         cursor: pointer;
-        color: $green;
-    }   
+        color: $green;     
+    } 
 }
-.header__currency_button.expand{
-    margin-right: 15px;
-    width: 20px;
-    line-height: 1.6;
-    float: left;
+.hmenu__currency_button.expand{
     .ic_angle-down{
         font-size: 14px;
         position: absolute;
-        right: -12px;
+        right: 15%;
         top: 50%;
         transform: translate(0%, -50%);
         transition: all .2s ease;
     }
+    &.clicked{
+        box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.3);
+        .ic_angle-down{
+            transform: translate(0%, -50%) rotate(-180deg);
+        }
+    }
 }
-.header__currency_list {
-    pointer-events: none;
-    opacity: 0;
-    transform: scaleY(0);
+.hmenu__currency_list {
+    pointer-events: none;    
     transform-origin: 0% 0%;
     transition: opacity .1s ease, transform .2s ease-out;
     position: absolute;
     z-index: 2;
     top: 100%;
-    right: -50%;
+    right: 0%;
     background-color: #FFFFFF;
     box-shadow: 3px 5px 5px rgba(0, 0, 0, .5);
+    &.show{
+        opacity: 1;
+        transform: scaleY(1);
+        pointer-events: auto; 
+    }
+    &.hide{
+        opacity: 0;
+        transform: scaleY(0);
+    }
     ul{
         display: flex;
         flex-direction: column;
