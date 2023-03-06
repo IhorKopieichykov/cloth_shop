@@ -334,8 +334,7 @@ $grey: #EEEEEE;
     }
     &:disabled{
         background-color: $grey;
-        color: $black;
-        border: 1px solid $black;
+        color: #fff;
     }
     &:disabled:hover{
         cursor: default;
