@@ -13,11 +13,12 @@ export default function Navigation() {
     return (
         <>
             {
-                path.length &&
+                path.length ?
                 <div className='main__navigation'>
                     <BackBtn />
                     <Breadcrumbs />
                 </div>
+                : ''
             }
         </>
     )

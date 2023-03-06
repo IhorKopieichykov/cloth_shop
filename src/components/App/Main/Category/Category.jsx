@@ -11,8 +11,8 @@ function Category({title, category}){
     const [catProducts, setCatProducts] = useState(products.filter(item => item.category === category));
     useEffect(()=>{
         if (!isLoading) {
-            // setCatProducts(products.filter(item => item.category === category));
-            setCatProducts(products);
+            setCatProducts(products.filter(item => item.category === category));
+            // setCatProducts(products);
         }
     }, [products, category, isLoading])
     
