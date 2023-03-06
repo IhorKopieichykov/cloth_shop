@@ -15,8 +15,8 @@ const base = "USD";
 const symbols = "USD,EUR,UAH";
 
 export default async function getCurrencyRatesFromApi() {
-    // let response = await fetch(`https://api.apilayer.com/exchangerates_data/latest?symbols=${symbols}&base=${base}`, requestOptions); // 250 requests 
-    // let response = await fetch(`https://api.apilayer.com/fixer/latest?symbols=${symbols}&base=${base}`, requestOptions);              // 100 requests 
+    // const response = await fetch(`https://api.apilayer.com/exchangerates_data/latest?symbols=${symbols}&base=${base}`, requestOptions); // 250 requests 
+    // const response = await fetch(`https://api.apilayer.com/fixer/latest?symbols=${symbols}&base=${base}`, requestOptions);              // 100 requests 
     const response = {
         "ok": false,
         "status": "from local json"

@@ -1,0 +1,36 @@
+$black: #1D1F22;
+$green: #5ECE7B;
+$grey: #777777;
+
+.main__backbtn_block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.backbtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    gap: 10px;
+    background-color: rgba(204, 204, 204, 0.5);
+    border: 1px solid $black;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px $grey, inset -2px -1px 3px $grey, inset 2px 2px 3px #fff;
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &:hover{
+        cursor: pointer;
+        background-color: $black;
+        // box-shadow: inset 0px 0px 5px #fff;
+        box-shadow: none;
+        color: #fff;
+    }
+}
+.ic_angle-left {
+}

@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, useEffect, useState } from 'react';
 import './Breadcrumbs.scss';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { ProductsContext, ProductsProvider } from '../../../ProductsContext/ProductsContext';
+import { ProductsContext, ProductsProvider } from '../../../../ProductsContext/ProductsContext';
 
 export default function Breadcrumbs() {
     const { products } = useContext(ProductsContext);

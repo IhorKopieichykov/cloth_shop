@@ -3,7 +3,6 @@ import CatProducts from "./CatProducts/CatProducts";
 import Sort from './Sort/Sort';
 import { ProductsContext } from '../../../ProductsContext/ProductsContext';
 import { useContext, useState, useMemo, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 import Filter from "./Filter/Filter";
 import Pagination from "./Pagination/Pagination";
 
@@ -43,6 +42,7 @@ function Category({title, category}){
         },
     ]
     const [productsPerPage, setProductsPerPage] = useState(goods_count_filter_values.at(-1).value);
+    
     
     
 

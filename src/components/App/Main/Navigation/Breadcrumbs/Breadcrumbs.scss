@@ -3,17 +3,7 @@ $green: #5ECE7B;
 $grey: #777777;
 
 .main__breadcrumbs {
-    padding: 20px 20px 10px;
-}
-@media (max-width: 992px) {
-    .main__breadcrumbs {
-        padding: 10px;
-    }
-}
-@media (max-width: 992px) {
-    .main__breadcrumbs {
-        padding: 10px 5px;
-    }
+    
 }
 .breadcrumbs {
     display: flex;
@@ -21,6 +11,7 @@ $grey: #777777;
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
+    flex-wrap: wrap;
 }
 .breadcrumbs__item{
     display: flex;

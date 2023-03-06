@@ -1,5 +1,5 @@
 import React from "react";
-import Breadcrumbs from "./Breadcrumbs/Breadcrumbs";
+import Navigation from "./Navigation/Navigation";
 import './Main.scss';
 
 export default function Main({children, outOfCont}){
@@ -7,7 +7,7 @@ export default function Main({children, outOfCont}){
             <main className="main">
                 {outOfCont}
                 <div className="main__container">
-                    <Breadcrumbs/>
+                    <Navigation />
                     {children}
                 </div>
             </main>

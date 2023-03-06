@@ -10,11 +10,4 @@ export default async function getProductsFromAPI() {
         console.log("Ошибка HTTP: " + response.status);
         return products;
     }
-    // return fetch(productsURL).then(response => {
-    //     if (response.ok) {
-    //         return response.json();            
-    //     } else {
-    //         return products;
-    //     }
-    // });
 }
