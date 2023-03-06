@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { createSearchParams, Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { createSearchParams, Link, useNavigate } from 'react-router-dom';
 import { ProductsContext } from '../../../ProductsContext/ProductsContext';
 import './Search.scss';
 
@@ -10,7 +10,7 @@ const symbols = {
 }
 
 function Search(){
-    const { products, isLoading, currency } = useContext(ProductsContext);
+    const { products, currency } = useContext(ProductsContext);
 
     const [query, setQuery] = useState('');
     const inputRef = useRef();

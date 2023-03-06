@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext, useMemo, useCallback } from 'react';
 import { ProductsContext } from '../../../ProductsContext/ProductsContext';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import './Search.scss';
 import SCategory from './SCategory/SCategory';
 
 export default function Search() {
-    const [searchParams , setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const { products } = useContext(ProductsContext);
     const query = useMemo(()=>searchParams.get("query"), [searchParams]);
     const [queryProducts, setQueryProducts] = useState([]);

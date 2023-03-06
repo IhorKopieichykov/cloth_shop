@@ -8,7 +8,7 @@ import { CartContext } from "../../../CartContext/CartContext";
 
 export default function BurgerMenu({menuItems}) {    
     const [open, setOpen] = useState(false);
-    const {cart, setItems} = useContext(CartContext);
+    const {cart} = useContext(CartContext);
 
     const getItemsCount = useCallback(() => {
         return cart.reduce((acc, item) => (acc += item.count), 0);

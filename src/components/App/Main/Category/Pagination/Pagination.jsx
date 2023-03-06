@@ -120,7 +120,8 @@ export default function Pagination({length, products, isLoading, setGoods, produ
                                                     number={number} 
                                                     handlerPage={handlerPage}/>
                                             )
-                                        }                                  
+                                        }      
+                                        return '';               
                                     })
                                 }
                             </div>

@@ -1,6 +1,6 @@
 import Category from '../components/App/Main/Category/Category';
 import Main from '../components/App/Main/Main';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 
 function Women(){
     useEffect(() => {

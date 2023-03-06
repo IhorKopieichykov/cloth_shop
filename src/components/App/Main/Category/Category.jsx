@@ -2,7 +2,7 @@ import "./Category.scss";
 import CatProducts from "./CatProducts/CatProducts";
 import Sort from './Sort/Sort';
 import { ProductsContext } from '../../../ProductsContext/ProductsContext';
-import { useContext, useState, useMemo, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import Filter from "./Filter/Filter";
 import Pagination from "./Pagination/Pagination";
 

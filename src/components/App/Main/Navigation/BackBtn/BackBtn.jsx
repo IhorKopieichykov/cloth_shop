@@ -1,15 +1,15 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import './BackBtn.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function BackBtn() {
     const navigate = useNavigate();
-    const [searchParams, setSearcParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
     const searchParamsLength = useMemo(()=>searchParams.toString().split("&").length, [searchParams]);
 
     const goBack = useCallback(() => {
-        navigate(-1 * searchParamsLength*3 - 1);
+        navigate(-1 * searchParamsLength*3 - 1, {replace: true});
     }, [navigate, searchParamsLength])
 
     return (

@@ -3,7 +3,6 @@ import "./slick.scss";
 import "./slick-theme.scss";
 import SlickSlider from "react-slick";
 import { useMemo } from 'react';
-import { useRef } from 'react';
 import Slide from './Slide/Slide';
 
 function SamplePrevArrow(props) {
