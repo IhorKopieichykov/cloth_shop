@@ -4,8 +4,6 @@ import './slick-theme.scss';
 import SlickSlider from "react-slick";
 import { useMemo } from 'react';
 import PSProduct from './PSProduct/PSProduct';
-import { useContext } from 'react';
-import ProductsContext from '../../../../ProductsContext/ProductsContext';
 
 function SamplePrevArrow(props) {
     const { className, style, onClick, children} = props;
@@ -28,9 +26,7 @@ function SampleNextArrow(props) {
     );
 }  
 
-export default function PromoSlider({products}) {    
-    // const {products} = useContext(ProductsContext);
-    // const slider_products = useMemo(()=>products.filter(prod=>prod.price <= 50), [products]);
+export default function PromoSlider({products}) {
     const settings = useMemo(()=>({
         dots: false,
         arrows: true,

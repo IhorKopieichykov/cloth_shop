@@ -1,7 +1,8 @@
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../../../ProductsContext/ProductsContext';
 import './SCategory.scss';
+import useWindowSize from '../../../../../helpers/useWindowSize';
 
 const symbols = {
     "usd": <>&#36;</>,
@@ -10,8 +11,25 @@ const symbols = {
 }
 
 export default function SCategory({category, queryProducts}) {
-    const [fullView, setFullView] = useState(false);
     const {currency} = useContext(ProductsContext);
+    const [fullView, setFullView] = useState(false);
+    const [shortListCount, setShortListCount] = useState(4);
+    const [width] = useWindowSize();
+
+    useEffect(()=>{
+        if (width > 992) {
+            setShortListCount(4);
+        }
+        if (width <= 992) {
+            setShortListCount(3);
+        }
+        if (width <= 700) {
+            setShortListCount(2);
+        }
+        if (width <= 475) {
+            setShortListCount(1);
+        }
+    }, [width]);
 
     const catProducts = useMemo(() => queryProducts.filter(prod => prod.category === category), [category, queryProducts]);
 
@@ -41,7 +59,7 @@ export default function SCategory({category, queryProducts}) {
                                 }
                             </div>
                         </Link>)
-                    :   catProducts.slice(0, 4).map((prod, index) => 
+                    :   catProducts.slice(0, shortListCount).map((prod, index) => 
                         <Link to={`/${prod.category}/${prod.id}`} className="scategory__item scitem" key={index}>
                             <div className="scitem__image">
                                 <img src={require(`../../../../../images/products/${prod.category}/${prod.id}/${prod.images[0]}`)} alt="prod_img" />
@@ -63,7 +81,7 @@ export default function SCategory({category, queryProducts}) {
                 }
             </div>
             {
-                catProducts.length > 4
+                catProducts.length > shortListCount
                 ?   <button className="scategory__button" onClick={()=>setFullView(!fullView)}>{fullView ? "Show less" : "Show more"}</button>
                 :   ''
             }

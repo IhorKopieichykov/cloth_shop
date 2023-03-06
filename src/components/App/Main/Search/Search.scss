@@ -16,6 +16,22 @@ $grey: #888888;
     line-height: 1.6;
     padding: 10px 0px;
 }
+@media (max-width: 992px) {
+    .search__title {
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1.6;
+        padding: 10px 0px;
+    }
+}
+@media (max-width: 768px) {
+    .search__title {
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1;
+        padding: 10px 0px;
+    }
+}
 .search__body {
 
 }
@@ -28,6 +44,13 @@ $grey: #888888;
     }
     padding: 0px 0px 10px;
     margin-bottom: 20px;
+}
+@media (max-width: 992px) {
+    .search__query {
+        padding: 0px 0px 10px;
+        margin-bottom: 0px;
+        font-size: 20px;
+    }
 }
 .search__result {
     display: flex;

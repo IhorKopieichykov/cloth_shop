@@ -5,6 +5,16 @@ $grey: #777777;
 .main__breadcrumbs {
     padding: 20px 20px 10px;
 }
+@media (max-width: 992px) {
+    .main__breadcrumbs {
+        padding: 10px;
+    }
+}
+@media (max-width: 992px) {
+    .main__breadcrumbs {
+        padding: 10px 5px;
+    }
+}
 .breadcrumbs {
     display: flex;
     flex-direction: row;
