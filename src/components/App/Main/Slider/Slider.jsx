@@ -31,52 +31,62 @@ export default function Slider() {
         {
             name: "01.jpg",
             title: "Brand New Models",
-            btn: "See more"
+            btn: "See more",
+            link: "/women"
         },
         {
             name: "02.jpg",
             title: "Your Best Accessories",
-            btn: "Check out"
+            btn: "Check out",
+            link: "/women"
         },
         {
             name: "03.jpg",
             title: "Fashionable Men's Suits",
-            btn: "Buy"
+            btn: "Buy",
+            link: "/men"
         },
         {
             name: "04.jpg",
             title: `Sport - is life! That's all for it`,
-            btn: "Get new one"
+            btn: "Get new one",
+            link: "/men"
         },
         {
             name: "05.jpg",
             title: "A series of new summer looks await of you",
-            btn: "Check out"
+            btn: "Check out",
+            link: "/women"
         },
         {
             name: "06.jpg",
             title: "Check out our new glasses collection",
-            btn: "Look through"
+            btn: "Look through",
+            link: "/women"
         },
         {
             name: "07.jpg",
             title: "Warm tracksuits - practicality and comfort",
-            btn: "Take a look"
+            btn: "Take a look",
+            link: "/men"
         },
         {
             name: "08.jpg",
             title: "Summer shoes - I believe I can fly!",
-            btn: "View more"
+            btn: "View more",
+            link: "/men"
         },
         {
             name: "09.jpg",
             title: "Women's outfits for you ladies",
-            btn: "Look over"
+            btn: "Look over",
+            link: "/women"
         },
         {
             name: "10.jpg",
             title: "Comfortable and practical shoes",
-            btn: "Get a better look"
+            btn: "Get a better look",
+            link: "/men"
         },       
     ], [])
     const settings = useMemo(()=>({

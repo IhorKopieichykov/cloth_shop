@@ -12,9 +12,15 @@ export default function Footer(){
                 </Link>
                 <menu className="footer__menu">
                     <ul>
-                        <li className="footer__menu_item">github</li>
-                        <li className="footer__menu_item">contacts</li>
-                        <li className="footer__menu_item">rights</li>
+                        <li>                            
+                            <Link to={"https://github.com/IhorKopieichykov/cloth_shop"} target="_blank" className="footer__menu_item">github</Link>
+                        </li>
+                        <li>                            
+                            <Link to={"https://github.com/IhorKopieichykov/cloth_shop"} target="_blank" className="footer__menu_item">contacts</Link>
+                        </li>
+                        <li>                            
+                            <Link to={"https://github.com/IhorKopieichykov/cloth_shop"} target="_blank" className="footer__menu_item">rights</Link>
+                        </li>
                     </ul>                        
                 </menu>
                 <div className="footer__slideup slideup" onClick={() => window.scrollTo({top: 0,left: 0,behavior: 'smooth'})}>

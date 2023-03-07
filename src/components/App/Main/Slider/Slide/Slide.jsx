@@ -1,5 +1,6 @@
 import React from 'react';
 import './Slide.scss';
+import { Link } from "react-router-dom"
 
 export default function Slide({img}) {
     return (
@@ -9,7 +10,7 @@ export default function Slide({img}) {
             </div>
             <div className="slide__content">
                 <div className="slide__title">{img.title}</div>
-                <div className="slide__button">{img.btn}</div>
+                <Link to={img.link} className="slide__button">{img.btn}</Link>
             </div>
         </div>
     )
