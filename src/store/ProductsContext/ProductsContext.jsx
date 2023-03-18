@@ -35,10 +35,12 @@ export const ProductsProvider = ({ children }) => {
 			setIsLoading(false);
 		});
 		getCurrencyRatesFromApi().then((obj) => {
-			if (obj.hasOwnProperty("rates")) {
-				setRates(obj.rates);
+			if (Object.keys(obj) !== 0) {
+				if (obj.hasOwnProperty("rates")) {
+					setRates(obj.rates);
+					console.log(obj);
+				}
 			}
-			console.log(obj);
 		});
 	}, []);
 

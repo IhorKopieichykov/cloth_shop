@@ -41,6 +41,7 @@ $grey: #888888;
     row-gap: 20px;
     width: 100%;
     border-top: 1px solid $grey;
+    transition: all 2s ease;
 }
 @media (max-width: 768px) {
     .scategory__items {

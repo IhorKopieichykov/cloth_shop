@@ -83,7 +83,7 @@ export function HeaderCart() {
 						{cart.map((item, index) => (
 							<HCartItem
 								currItem={item}
-								key={item.id}
+								key={index}
 								index={index}
 								onUpdate={updateCartItem}
 							/>

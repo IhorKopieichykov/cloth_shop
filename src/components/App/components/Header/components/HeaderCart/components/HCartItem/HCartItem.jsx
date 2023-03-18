@@ -71,7 +71,7 @@ export function HCartItem({ currItem, index, onUpdate }) {
 			/>
 			<div className="hcart__item_image">
 				<img
-					src={require(`../../../../../../../../shared/images/products${
+					src={require(`../../../../../../../../shared/images/products/${
 						currItem.category
 					}/${currItem.id}/${
 						currItem?.images[currItem.colors.indexOf(currItem.color)]
