@@ -1,0 +1,56 @@
+[
+    {
+        "id": "adicolor_essentials_fleece",
+        "name": "Adicolor Essentials Fleece",
+        "images": ["34687895643.jpg", "346548679789.jpg", "426475735465.jpg", "3265775468569.jpg", "23457687254363425.jpg"],
+        "price": 49.99,
+        "sizes": ["27", "28", "29", "30"],
+        "colors": ["#DD9C9C", "#FBEEEE", "#696969", "#000000", "#E9A571"],
+        "category": "women"
+    },
+    {
+        "id": "adidas_sportswear_future_icons_3_stripes",
+        "name": "Adidas Sportswear Future Icons 3-Stripes",
+        "images": ["34556876856.jpg", "534653686758.jpg", "345479858768542.jpg"],
+        "price": 50.00,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#FFE2CC", "#414141", "#FFFFFF"],
+        "category": "women"
+    },
+    {
+        "id": "climacool_heroes",
+        "name": "Climacool Heroes",
+        "images": ["45689652342.jpg", "679867742534.jpg", "34554846653465.jpg"],
+        "price": 52.18,
+        "sizes": ["36", "37", "38", "39"],
+        "colors": ["#930000", "#CCCCCC", "#000000"],
+        "category": "women"
+    },
+    {
+        "id": "essentials_3_stripes",
+        "name": "Essentials 3-Stripes",
+        "images": ["4675663452.jpg", "34467564765.jpg", "5347658423543.jpg"],
+        "price": 30.27,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#000000", "#A4A4A4", "#5D7CAD"],
+        "category": "women"
+    },
+    {
+        "id": "essentials_slim_3_stripes",
+        "name": "Essentials Slim 3-Stripes",
+        "images": ["4376784765.jpg", "63487837564.jpg", "436568745643.jpg"],
+        "price": 50.00,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#FFFFFF", "#000000", "#909090"],
+        "category": "women"
+    },
+    {
+        "id": "primeblue_sst",
+        "name": "Primeblue SST",
+        "images": ["345766867.jpg", "908998564.jpg", "3458656634.jpg", "6978754534254.jpg", "534657587434653.jpg"],
+        "price": 50.49,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#F9AE73", "#E1B0AC", "#000000", "#91B099", "#F85353"],
+        "category": "women"
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "id": "3s_perf_wv_sho",
+        "name": "3S Perf WV Sho",
+        "images": ["53467568756.jpg", "366585678879.jpg"],
+        "price": 49.99,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#000000", "#767676"],
+        "category": "men"
+    },
+    {
+        "id": "adicolor_classics_primeblue_sst",
+        "name": "Adicolor Classics Primeblue SST",
+        "images": ["34253564564.jpg", "235345364674.jpg", "5347568567464.jpg"],
+        "price": 50.00,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#00276D", "#000000", "#E42F2F"],
+        "category": "men"
+    },
+    {
+        "id": "adicool_3_stripes",
+        "name": "Adicool 3-Stripes",
+        "images": ["3464575685.jpg", "3465646532.jpg", "45789867834.jpg"],
+        "price": 52.18,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#000000", "#434C6C", "#EA8120"],
+        "category": "men"
+    },
+    {
+        "id": "helionic",
+        "name": "Helionic",
+        "images": ["34576784.jpg", "2345857673452.jpg", "3425645687567.jpg"],
+        "price": 30.27,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#000000", "#AE0000", "#2E4430"],
+        "category": "men"
+    },
+    {
+        "id": "ozweego_celox",
+        "name": "Ozweego Celox",
+        "images": ["34675786.jpg", "3545685678.jpg", "34758657486.jpg"],
+        "price": 50.00,
+        "sizes": ["41", "42", "43", "44"],
+        "colors": ["#000000", "#B4AA5F", "#B3CEC9"],
+        "category": "men"
+    },
+    {
+        "id": "studio_lounge",
+        "name": "Studio Lounge",
+        "images": ["375867856.jpg", "56564867834.jpg", "4236588974354.jpg"],
+        "price": 50.49,
+        "sizes": ["s", "m", "l", "xl"],
+        "colors": ["#000000", "#0091BC", "#6D0909"],
+        "category": "men"
+    }
+]
