@@ -15,21 +15,33 @@ $grey: #777777;
     justify-content: center;
     padding: 5px 10px;
     gap: 10px;
-    background-color: rgba(204, 204, 204, 0.5);
+    background-color: #fff;
     border: 1px solid $black;
-    border-radius: 10px;
-    box-shadow: 3px 3px 5px $grey, inset -2px -1px 3px $grey, inset 2px 2px 3px #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all .2s ease;
     div{
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    &:hover{
-        cursor: pointer;
-        background-color: $black;
-        // box-shadow: inset 0px 0px 5px #fff;
-        box-shadow: none;
-        color: #fff;
+}
+@media (min-width: 992px) {
+    .backbtn {
+        &:hover{
+            background-color: $black;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 3px 3px 5px #616161;
+        }
+    }
+}
+@media (max-width: 991.98px) {
+    .backbtn {
+        &:active{
+            background-color: $black;
+            color: #fff;
+        }
     }
 }
 .ic_angle-left {
