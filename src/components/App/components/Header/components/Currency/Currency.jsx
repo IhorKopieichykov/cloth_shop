@@ -1,5 +1,5 @@
 import './Currency.scss';
-import { ProductsContext } from '../../../ProductsContext/ProductsContext';
+import { ProductsContext } from '../../../../../../store/ProductsContext';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ const symbols = {
     "eur": <>&#8364;</>,
 }
 
-function Currency(){
+export function Currency(){
     const { rates, currency, changeCurrency } = useContext(ProductsContext);
     const [selected, setSelected] = useState(currency);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -57,5 +57,3 @@ function Currency(){
         </div>        
     );
 }
-
-export default Currency;

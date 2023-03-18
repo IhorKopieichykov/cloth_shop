@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import './CatProduct.scss';
 import { Link } from 'react-router-dom';
-import { ProductsContext } from '../../../../../ProductsContext/ProductsContext';
+import { ProductsContext } from '../../../../../../../../../../store/ProductsContext';
 
 const symbols = {
     "usd": <>&#36;</>,
@@ -9,14 +9,14 @@ const symbols = {
     "eur": <>&#8364;</>,
 }
 
-export default function CatProduct({product, addToCart}) {
+export function CatProduct({product, addToCart}) {
     const [added, setAdded] = useState(false);
     const {currency} = useContext(ProductsContext);
 
     return (
         <Link to={`${product.id}`} className="cat__product" key={product.id}>
             <div className="cat__product_image">
-                <img src={require(`../../../../../../images/products/${product.category}/${product.id}/${product.images[0]}`)} alt={product.id} />
+                <img src={require(`../../../../../../../../../../shared/images/products/${product.category}/${product.id}/${product.images[0]}`)} alt={product.id} />
             </div>                                
             <div className={`cat__product_addtocart ${added ? "clicked" : ''}`} 
                 onClick={(e) => {

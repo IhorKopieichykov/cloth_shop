@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext, useMemo, useCallback } from 'react';
-import { ProductsContext } from '../../../ProductsContext/ProductsContext';
+import { ProductsContext } from '../../../../../../store/ProductsContext';
 import { useSearchParams } from 'react-router-dom';
 import './Search.scss';
-import SCategory from './SCategory/SCategory';
+import {SCategory} from './components/SCategory';
 
-export default function Search() {
+export function Search() {
     const [searchParams] = useSearchParams();
     const { products } = useContext(ProductsContext);
     const query = useMemo(()=>searchParams.get("query"), [searchParams]);

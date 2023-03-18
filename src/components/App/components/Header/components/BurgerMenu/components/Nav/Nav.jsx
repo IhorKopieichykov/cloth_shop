@@ -1,7 +1,7 @@
 import './Nav.scss';
 import { NavLink } from 'react-router-dom';
 
-function Nav({menuItems, setOpen}){
+export function Nav({menuItems, setOpen}){
     return (
         <nav className="hmenu__nav">
             {
@@ -12,5 +12,3 @@ function Nav({menuItems, setOpen}){
         </nav>
     );
 }
-
-export default Nav;

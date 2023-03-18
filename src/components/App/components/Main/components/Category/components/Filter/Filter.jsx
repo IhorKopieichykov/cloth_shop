@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './Filter.scss';
 
-export default function Filter({type, title, values, defValue, callback}) {
+export function Filter({type, title, values, defValue, callback}) {
     const [open, setOpen] = useState(false);    
     const filterRef = useRef();
     const [searchParams, setSearchParams] = useSearchParams();

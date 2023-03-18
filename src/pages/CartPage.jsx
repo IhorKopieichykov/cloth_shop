@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Cart from '../components/App/Main/Cart/Cart';
-import Main from '../components/App/Main/Main';
+import {Cart} from '../components/App/components/Main/components/Cart';
+import {Main} from '../components/App/components/Main';
 
 export default function CartPage() {
     useEffect(() => {

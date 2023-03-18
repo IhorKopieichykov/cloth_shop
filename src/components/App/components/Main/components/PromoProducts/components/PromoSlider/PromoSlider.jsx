@@ -3,7 +3,7 @@ import './slick.scss';
 import './slick-theme.scss';
 import SlickSlider from "react-slick";
 import { useMemo } from 'react';
-import PSProduct from './PSProduct/PSProduct';
+import {PSProduct} from './components/PSProduct';
 
 function SamplePrevArrow(props) {
     const { className, style, onClick, children} = props;
@@ -26,7 +26,7 @@ function SampleNextArrow(props) {
     );
 }  
 
-export default function PromoSlider({products}) {
+export function PromoSlider({products}) {
     const settings = useMemo(()=>({
         dots: false,
         arrows: true,

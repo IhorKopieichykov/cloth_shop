@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import './BackBtn.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-export default function BackBtn() {
+export function BackBtn() {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
 

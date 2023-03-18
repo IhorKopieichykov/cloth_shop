@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useState } from "react";
 import './BurgerMenu.scss';
-import logo from '../../../../images/header/logo.svg';
-import Nav from "./Nav/Nav";
-import Currency from "./Currency/Currency";
+import logo from '../../../../../../shared/images/header/logo.svg';
+import {Nav} from "./components/Nav";
+import {Currency} from "./components/Currency";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../../CartContext/CartContext";
+import { CartContext } from "../../../../../../store/CartContext";
 
-export default function BurgerMenu({menuItems}) {    
+export function BurgerMenu({menuItems}) {    
     const [open, setOpen] = useState(false);
     const {cart} = useContext(CartContext);
 

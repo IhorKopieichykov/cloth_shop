@@ -1,5 +1,5 @@
 import './Currency.scss';
-import { ProductsContext } from '../../../../ProductsContext/ProductsContext';
+import { ProductsContext } from '../../../../../../../../store/ProductsContext';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ const symbols = {
     "eur": <>&#8364;</>,
 }
 
-function Currency(){
+export function Currency(){
     const { rates, currency, changeCurrency } = useContext(ProductsContext);
     const [open, setOpen] = useState(false);
     const currRef = useRef();
@@ -71,4 +71,3 @@ function Currency(){
     );
 }
 
-export default Currency;

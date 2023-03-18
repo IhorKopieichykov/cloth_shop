@@ -1,6 +1,6 @@
 import './HItemOption.scss';
 
-function HItemOption({item, index, onUpdate, type}){
+export function HItemOption({item, index, onUpdate, type}){
     return  (
         <div className="hcart__item_option">
             <div className="hcart__item_option-title">{type[0].toUpperCase() + type.slice(1)}:</div>
@@ -28,5 +28,3 @@ function HItemOption({item, index, onUpdate, type}){
         </div>
     );
 }
-
-export default HItemOption;

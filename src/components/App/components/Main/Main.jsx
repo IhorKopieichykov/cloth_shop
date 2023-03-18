@@ -1,8 +1,8 @@
 import React from "react";
-import Navigation from "./Navigation/Navigation";
+import {Navigation} from "./components/Navigation";
 import './Main.scss';
 
-export default function Main({children, outOfCont}){
+export function Main({children, outOfCont}){
     return (
             <main className="main">
                 {outOfCont}

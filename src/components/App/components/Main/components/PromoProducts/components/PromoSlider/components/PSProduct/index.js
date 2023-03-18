@@ -1,0 +1,1 @@
+export {PSProduct} from './PSProduct'

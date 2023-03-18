@@ -1,7 +1,7 @@
 import './Nav.scss';
 import { NavLink } from 'react-router-dom';
 
-function Nav({menuItems}){
+export function Nav({menuItems}){
     return (
         <nav className='header__nav nav'>
             {
@@ -12,5 +12,3 @@ function Nav({menuItems}){
         </nav>
     );
 }
-
-export default Nav;

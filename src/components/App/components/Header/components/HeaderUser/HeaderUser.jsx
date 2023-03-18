@@ -1,7 +1,7 @@
 import React from 'react';
 import './HeaderUser.scss';
 
-export default function HeaderUser() {
+export function HeaderUser() {
   return (
     <div className='header__user huser'>
         <div className="huser__icon">

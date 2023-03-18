@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartItemOption.scss';
 
-export default function CartItemOption({item, index, onUpdate, type}) {
+export function CartItemOption({item, index, onUpdate, type}) {
     return (
         <div className="cart__item_option">
             <div className="cart__item_option-title">{type[0].toUpperCase() + type.slice(1)}:</div>

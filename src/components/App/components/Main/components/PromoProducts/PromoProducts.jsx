@@ -1,7 +1,7 @@
 import './PromoProducts.scss';
-import PromoSlider from './PromoSlider/PromoSlider';
+import {PromoSlider} from './components/PromoSlider';
 
-function PromoProducts({title, products}) {
+export function PromoProducts({title, products}) {
     return (
         <section className="main__promo promo">
             <h2 className="promo__title">{title}</h2>
@@ -11,5 +11,3 @@ function PromoProducts({title, products}) {
         </section>
     );
 }
-
-export default PromoProducts;

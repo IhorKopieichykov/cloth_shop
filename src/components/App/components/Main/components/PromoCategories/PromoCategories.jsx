@@ -1,10 +1,10 @@
 import './PromoCategories.scss';
-import women from '../../../../images/main/home/categories/women.png';
-import men from '../../../../images/main/home/categories/men.png';
-import kids from '../../../../images/main/home/categories/kids.png';
+import women from '../../../../../../shared/images/main/home/categories/women.png';
+import men from '../../../../../../shared/images/main/home/categories/men.png';
+import kids from '../../../../../../shared/images/main/home/categories/kids.png';
 import { Link } from 'react-router-dom';
 
-function PromoCategories() {
+export function PromoCategories() {
     return (
         <section className="main__promo promo">
             <h2 className="promo__title">Shop by Category</h2>
@@ -27,5 +27,3 @@ function PromoCategories() {
         </section>
     );
 }
-
-export default PromoCategories;

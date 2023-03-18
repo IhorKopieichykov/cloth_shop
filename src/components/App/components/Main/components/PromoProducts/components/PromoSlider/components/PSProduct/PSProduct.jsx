@@ -2,10 +2,10 @@ import React from 'react';
 import './PSProduct.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { CartContext } from '../../../../../CartContext/CartContext';
+import { CartContext } from '../../../../../../../../../../store/CartContext';
 import { useContext } from 'react';
 
-export default function PSProduct({product}) {
+export function PSProduct({product}) {
     const [added, setAdded] = useState(false);
     const { cart, setItems } = useContext(CartContext);
 
@@ -29,7 +29,7 @@ export default function PSProduct({product}) {
     return (
         <Link to={`${product.category}/${product.id}`} className="promo_product">
             <div className="promo_product__image">
-                <img src={require(`../../../../../../images/products/${product.category}/${product.id}/${product.images[0]}`)} alt="prod_img" />
+                <img src={require(`../../../../../../../../../../shared/images/products/${product.category}/${product.id}/${product.images[0]}`)} alt="prod_img" />
             </div>
             <div className={`promo_product__addtocart ${added ? "clicked" : ''}`} 
                 onClick={(e) => {

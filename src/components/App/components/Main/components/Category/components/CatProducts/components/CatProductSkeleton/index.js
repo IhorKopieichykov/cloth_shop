@@ -1,0 +1,1 @@
+export {CatProductSkeleton} from './CatProductSkeleton'

@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { createSearchParams, Link, useNavigate } from 'react-router-dom';
-import { ProductsContext } from '../../../ProductsContext/ProductsContext';
+import { ProductsContext } from '../../../../../../store/ProductsContext';
 import './Search.scss';
 
 const symbols = {
@@ -9,7 +9,7 @@ const symbols = {
     "eur": <>&#8364;</>,
 }
 
-function Search(){
+export function Search(){
     const { products, currency } = useContext(ProductsContext);
 
     const [query, setQuery] = useState('');
@@ -146,5 +146,3 @@ function Search(){
         </div>
     );
 }
-
-export default Search;

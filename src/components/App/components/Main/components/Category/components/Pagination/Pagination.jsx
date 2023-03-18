@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import PageNumber from './PageNumber/PageNumber';
+import {PageNumber} from './components/PageNumber';
 import './Pagination.scss';
 
-export default function Pagination({length, products, isLoading, setGoods, productsPerPage}) {
+export function Pagination({length, products, isLoading, setGoods, productsPerPage}) {
     const [countOfPages, setCountOfPages] = useState(Math.ceil(length/productsPerPage));
     useEffect(()=>{
         setCountOfPages(Math.ceil(length/productsPerPage));

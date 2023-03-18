@@ -1,7 +1,7 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-const CatProductSkeleton = (props) => (
+export const CatProductSkeleton = (props) => (
   <ContentLoader 
     speed={2}
     width={300}
@@ -16,5 +16,3 @@ const CatProductSkeleton = (props) => (
     <rect x="20" y="350" rx="10" ry="10" width="70" height="25" />
   </ContentLoader>
 )
-
-export default CatProductSkeleton;

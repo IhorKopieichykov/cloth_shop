@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductOption.scss';
 
-export default function ProductOption({type, values, value, setValue}) {
+export function ProductOption({type, values, value, setValue}) {
     return (
         <div className="product__option">
             <div className="product__option-title">{type}:</div>

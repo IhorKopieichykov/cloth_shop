@@ -1,0 +1,1 @@
+export {CatProduct} from './CatProduct'

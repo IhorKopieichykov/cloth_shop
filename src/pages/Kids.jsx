@@ -1,5 +1,5 @@
-import Category from '../components/App/Main/Category/Category';
-import Main from '../components/App/Main/Main';
+import {Category} from '../components/App/components/Main/components/Category';
+import {Main} from '../components/App/components/Main';
 import { useEffect } from 'react';
 
 function Kids(){

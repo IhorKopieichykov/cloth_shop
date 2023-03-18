@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.scss';
-import logo from "../../../images/header/logo.svg";
+import logo from "../../../../shared/images/header/logo.svg";
 import { Link } from "react-router-dom";
 
 export default function Footer(){

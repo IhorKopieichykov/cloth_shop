@@ -2,7 +2,7 @@ import './Sort.scss';
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-export default function Sort({products, setProducts}){
+export function Sort({products, setProducts}){
     const [open, setOpen] = useState(false);    
     const sortRef = useRef();
     const [searchParams, setSearchParams] = useSearchParams();    

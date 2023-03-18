@@ -1,7 +1,7 @@
 import React from 'react';
 import './PageNumber.scss';
 
-export default function PageNumber({index, selected, pageNumbers, number, handlerPage}) {
+export function PageNumber({index, selected, pageNumbers, number, handlerPage}) {
     return (
         <>
             {

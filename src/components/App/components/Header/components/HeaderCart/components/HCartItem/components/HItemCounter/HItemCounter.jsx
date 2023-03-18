@@ -1,7 +1,7 @@
 import React from 'react';
 import './HItemCounter.scss';
 
-function HItemCounter({item, index, onUpdate, setWindowOpen}){
+export function HItemCounter({item, index, onUpdate, setWindowOpen}){
     return  (
         <div className="hcart__item_counter">
             <div className="hcart__item_counter__option" 
@@ -24,5 +24,3 @@ function HItemCounter({item, index, onUpdate, setWindowOpen}){
         </div>
     );
 }
-
-export default HItemCounter;

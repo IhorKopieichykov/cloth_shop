@@ -1,0 +1,1 @@
+export {SCategory} from './SCategory';
