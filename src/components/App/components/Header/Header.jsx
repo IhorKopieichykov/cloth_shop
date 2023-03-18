@@ -2,7 +2,7 @@ import './Header.scss';
 import logo from "../../../images/header/logo.svg";
 import Nav from './Nav/Nav';
 import HeaderCart from './HeaderCart/HeaderCart';
-import Currency from './Currency/Currency';
+import Currency from './components/Currency/Currency';
 import Search from './Search/Search';
 import { Link } from 'react-router-dom';
 import HeaderUser from './HeaderUser/HeaderUser';
